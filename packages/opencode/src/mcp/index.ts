@@ -517,7 +517,7 @@ export const layer = Layer.effect(
                 watch(s, key, result.mcpClient, bridge, mcp.timeout)
               }
             }),
-          { concurrency: "unbounded" },
+          { concurrency: 4 },
         )
 
         yield* Effect.addFinalizer(() =>
@@ -541,7 +541,7 @@ export const layer = Layer.effect(
                   }
                   yield* Effect.tryPromise(() => client.close()).pipe(Effect.ignore)
                 }),
-              { concurrency: "unbounded" },
+              { concurrency: 4 },
             )
             pendingOAuthTransports.clear()
           }),

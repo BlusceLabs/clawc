@@ -509,7 +509,7 @@ export const layer: Layer.Layer<
             if (!target.startsWith(`${base}${pathSvc.sep}`)) return
             yield* fs.remove(target, { recursive: true }).pipe(Effect.ignore)
           }),
-        { concurrency: "unbounded" },
+        { concurrency: 5 },
       )
     })
 

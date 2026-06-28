@@ -308,7 +308,7 @@ function ansiToRgba(code: number): RGBA {
       "#800000", // Red
       "#008000", // Green
       "#808000", // Yellow
-      "#000080", // Blue
+      "#6b4c2a", // Blue → Dark Brown
       "#800080", // Magenta
       "#008080", // Cyan
       "#c0c0c0", // White
@@ -316,7 +316,7 @@ function ansiToRgba(code: number): RGBA {
       "#ff0000", // Bright Red
       "#00ff00", // Bright Green
       "#ffff00", // Bright Yellow
-      "#0000ff", // Bright Blue
+      "#8b6914", // Bright Blue → Golden Brown
       "#ff00ff", // Bright Magenta
       "#00ffff", // Bright Cyan
       "#ffffff", // Bright White
@@ -443,23 +443,23 @@ export function generateSystem(colors: TerminalColors, mode: "dark" | "light"): 
       // Markdown colors
       markdownText: fg,
       markdownHeading: fg,
-      markdownLink: ansiColors.blue,
+      markdownLink: "#6b4c2a",
       markdownLinkText: ansiColors.cyan,
       markdownCode: ansiColors.green,
       markdownBlockQuote: ansiColors.yellow,
       markdownEmph: ansiColors.yellow,
       markdownStrong: fg,
       markdownHorizontalRule: grays[7],
-      markdownListItem: ansiColors.blue,
+      markdownListItem: "#6b4c2a",
       markdownListEnumeration: ansiColors.cyan,
-      markdownImage: ansiColors.blue,
+      markdownImage: "#6b4c2a",
       markdownImageText: ansiColors.cyan,
       markdownCodeBlock: fg,
 
-      // Syntax colors
+   // Syntax colors
       syntaxComment: textMuted,
       syntaxKeyword: ansiColors.magenta,
-      syntaxFunction: ansiColors.blue,
+      syntaxFunction: "#6b4c2a",
       syntaxVariable: fg,
       syntaxString: ansiColors.green,
       syntaxNumber: ansiColors.yellow,

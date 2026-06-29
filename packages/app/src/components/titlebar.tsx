@@ -1,15 +1,15 @@
 import { createEffect, createMemo, createResource, createSignal, Match, Show, Switch, untrack } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useLocation, useNavigate, useParams } from "@solidjs/router"
-import { IconButton } from "@opencode-ai/ui/icon-button"
-import { Icon } from "@opencode-ai/ui/icon"
-import { Button } from "@opencode-ai/ui/button"
-import { Tooltip, TooltipKeybind } from "@opencode-ai/ui/tooltip"
-import { useTheme } from "@opencode-ai/ui/theme/context"
-import { IconButtonV2 } from "@opencode-ai/ui/v2/icon-button-v2"
-import { Icon as IconV2 } from "@opencode-ai/ui/v2/icon"
-import { KeybindV2 } from "@opencode-ai/ui/v2/keybind-v2"
-import { TooltipV2 } from "@opencode-ai/ui/v2/tooltip-v2"
+import { IconButton } from "@clawc/ui/icon-button"
+import { Icon } from "@clawc/ui/icon"
+import { Button } from "@clawc/ui/button"
+import { Tooltip, TooltipKeybind } from "@clawc/ui/tooltip"
+import { useTheme } from "@clawc/ui/theme/context"
+import { IconButtonV2 } from "@clawc/ui/v2/icon-button-v2"
+import { Icon as IconV2 } from "@clawc/ui/v2/icon"
+import { KeybindV2 } from "@clawc/ui/v2/keybind-v2"
+import { TooltipV2 } from "@clawc/ui/v2/tooltip-v2"
 
 import { LayoutRoute, useLayout } from "@/context/layout"
 import { usePlatform } from "@/context/platform"
@@ -621,7 +621,7 @@ export function Titlebar(props: { update?: TitlebarUpdate }) {
                         </Tooltip>
                       </div>
                     </Show>
-                    <div id="opencode-titlebar-left" class="flex items-center gap-3 min-w-0 px-2" />
+                    <div id="clawc-titlebar-left" class="flex items-center gap-3 min-w-0 px-2" />
                     <ChannelIndicator />
                   </div>
                 </div>
@@ -630,7 +630,7 @@ export function Titlebar(props: { update?: TitlebarUpdate }) {
 
             <div class="min-w-0 flex items-center justify-center pointer-events-none">
               <div
-                id="opencode-titlebar-center"
+                id="clawc-titlebar-center"
                 class="pointer-events-auto min-w-0 flex justify-center w-fit max-w-full"
               />
             </div>
@@ -643,7 +643,7 @@ export function Titlebar(props: { update?: TitlebarUpdate }) {
               data-tauri-drag-region
               onMouseDown={drag}
             >
-              <div id="opencode-titlebar-right" class="flex items-center gap-1 shrink-0 justify-end" />
+              <div id="clawc-titlebar-right" class="flex items-center gap-1 shrink-0 justify-end" />
               <Show when={windows()}>
                 {!tauriApi() && <div class="shrink-0" style={{ width: windowsControlsWidth() }} />}
                 <div data-tauri-decorum-tb class="flex flex-row" />
@@ -675,7 +675,7 @@ function TitlebarV2Right(props: { state: TitlebarV2RightState }) {
       <Show when={props.state.update.visible}>
         <TitlebarUpdateIconButton state={props.state.update} />
       </Show>
-      <div id="opencode-titlebar-right" class="flex shrink-0 items-center justify-end gap-0" />
+      <div id="clawc-titlebar-right" class="flex shrink-0 items-center justify-end gap-0" />
     </div>
   )
 }
@@ -712,9 +712,9 @@ function TitlebarUpdateIconButton(props: { state: TitlebarUpdatePillState }) {
 function ChannelIndicator() {
   return (
     <>
-      {["beta", "dev"].includes(import.meta.env.VITE_OPENCODE_CHANNEL) && (
+      {["beta", "dev"].includes(import.meta.env.VITE_CLAWC_CHANNEL) && (
         <div class="bg-icon-interactive-base text-[#FFF] font-medium px-2 rounded-sm uppercase font-mono">
-          {import.meta.env.VITE_OPENCODE_CHANNEL.toUpperCase()}
+          {import.meta.env.VITE_CLAWC_CHANNEL.toUpperCase()}
         </div>
       )}
     </>

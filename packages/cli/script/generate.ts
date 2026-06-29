@@ -1,4 +1,4 @@
-const modelsUrl = process.env.OPENCODE_MODELS_URL || "https://models.jabez.co.ke"
+const modelsUrl = process.env.CLAWC_MODELS_URL || "https://models.jabez.co.ke"
 
 export const modelsData = process.env.MODELS_DEV_API_JSON
   ? await Bun.file(process.env.MODELS_DEV_API_JSON).text()

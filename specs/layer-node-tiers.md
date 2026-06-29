@@ -217,19 +217,19 @@ The caller owns:
 
 The abstraction must not contain built-in knowledge of global, location, request, workspace, or other application-specific tiers.
 
-## Deferred: packages/opencode Compatibility
+## Deferred: packages/clawc Compatibility
 
-The first implementation will not migrate or redesign the existing `packages/opencode` integration with core's `LocationServiceMap`.
+The first implementation will not migrate or redesign the existing `packages/clawc` integration with core's `LocationServiceMap`.
 
-`packages/opencode` currently uses its own `InstanceState` lifecycle while bridging to core location services through `LocationServiceMap`. Production consumers include:
+`packages/clawc` currently uses its own `InstanceState` lifecycle while bridging to core location services through `LocationServiceMap`. Production consumers include:
 
-- `packages/opencode/src/session/system.ts`
-- `packages/opencode/src/agent/agent.ts`
-- `packages/opencode/src/cli/cmd/debug/file.ts`
-- `packages/opencode/src/cli/cmd/debug/v2.ts`
-- `packages/opencode/src/server/routes/instance/httpapi/handlers/file.ts`
-- `packages/opencode/src/server/routes/instance/httpapi/handlers/pty.ts`
+- `packages/clawc/src/session/system.ts`
+- `packages/clawc/src/agent/agent.ts`
+- `packages/clawc/src/cli/cmd/debug/file.ts`
+- `packages/clawc/src/cli/cmd/debug/v2.ts`
+- `packages/clawc/src/server/routes/instance/httpapi/handlers/file.ts`
+- `packages/clawc/src/server/routes/instance/httpapi/handlers/pty.ts`
 
 Some consumers wrap `LocationServiceMap.layer` as an opaque `LayerNode`; others provide the layer directly. We need to determine how these bridges consume the tier-built core graph and how unresolved global dependencies are exposed after the new core location builder is implemented.
 
-This compatibility work must happen after the first tier implementation. The first implementation should preserve existing `packages/opencode` behavior and avoid changing these bridges.
+This compatibility work must happen after the first tier implementation. The first implementation should preserve existing `packages/clawc` behavior and avoid changing these bridges.

@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test"
 import { clearWslDistroState, requireWslIpcString, wslServerIdToRestart, wslTerminalArgs } from "./policy"
 import {
-  expectOpencodeVersion,
+  expectClawcVersion,
   pendingRestartAfterWslInstall,
   pollWslHealth,
   wslServerIdsToStartOnInitialize,
@@ -21,8 +21,8 @@ test("starts every configured WSL server on initialization", () => {
 })
 
 test("rejects an update that did not install the desktop version", () => {
-  expect(() => expectOpencodeVersion("1.16.2", "1.16.2")).not.toThrow()
-  expect(() => expectOpencodeVersion("1.14.35", "1.16.2")).toThrow(
+  expect(() => expectClawcVersion("1.16.2", "1.16.2")).not.toThrow()
+  expect(() => expectClawcVersion("1.14.35", "1.16.2")).toThrow(
     "OpenCode update finished but Debian still reports 1.14.35; expected 1.16.2",
   )
 })
@@ -49,7 +49,7 @@ test("clears cached distro probes when removing a WSL server", () => {
       {
         Debian: {
           distro: "Debian",
-          resolvedPath: "/home/luke/.opencode/bin/opencode",
+          resolvedPath: "/home/luke/.clawc/bin/clawc",
           version: "1.16.2",
           expectedVersion: "1.16.2",
           matchesDesktop: true,
@@ -58,7 +58,7 @@ test("clears cached distro probes when removing a WSL server", () => {
       },
       "Debian",
     ),
-  ).toEqual({ distroProbes: {}, opencodeChecks: {} })
+  ).toEqual({ distroProbes: {}, clawcChecks: {} })
 })
 
 test("opens terminals for distro names containing spaces", () => {
@@ -107,7 +107,7 @@ test("ignores stale background OpenCode checks after removing a WSL server", asy
         onExit: () => undefined,
       },
       url: "http://127.0.0.1:4096",
-      username: "opencode",
+      username: "clawc",
       password: "secret",
     }),
     testControllerOptions(),
@@ -120,7 +120,7 @@ test("ignores stale background OpenCode checks after removing a WSL server", asy
   await new Promise((resolve) => setTimeout(resolve, 0))
 
   expect(controller.getState().servers).toEqual([])
-  expect(controller.getState().opencodeChecks).toEqual({})
+  expect(controller.getState().clawcChecks).toEqual({})
 })
 
 test("ignores stale startup OpenCode checks after removing a WSL server", async () => {
@@ -139,7 +139,7 @@ test("ignores stale startup OpenCode checks after removing a WSL server", async 
   await new Promise((resolve) => setTimeout(resolve, 0))
 
   expect(controller.getState().servers).toEqual([])
-  expect(controller.getState().opencodeChecks).toEqual({})
+  expect(controller.getState().clawcChecks).toEqual({})
 })
 
 async function waitFor(check: () => boolean) {
@@ -161,7 +161,7 @@ function testControllerOptions() {
       await new Promise<void>((resolve) => {
         releaseOpencodeResolve = resolve
       })
-      return "/home/me/.opencode/bin/opencode"
+      return "/home/me/.clawc/bin/clawc"
     },
   }
 }

@@ -1,19 +1,19 @@
 export * as EventV2 from "./event"
 
 import { Cause, Context, Effect, Layer, Option, PubSub, Schema, Stream } from "effect"
-import { Event } from "@opencode-ai/schema/event"
-import type { Data, Definition, Payload } from "@opencode-ai/schema/event"
+import { Event } from "@clawc/schema/event"
+import type { Data, Definition, Payload } from "@clawc/schema/event"
 import { and, asc, eq, gt } from "drizzle-orm"
 import { Database } from "./database/database"
 import { EventSequenceTable, EventTable } from "./event/sql"
 import { Location } from "./location"
 import { LayerNode } from "./effect/layer-node"
 import { isDeepStrictEqual } from "node:util"
-import { Durable } from "@opencode-ai/schema/durable-event-manifest"
+import { Durable } from "@clawc/schema/durable-event-manifest"
 
 export const ID = Event.ID
-export type ID = import("@opencode-ai/schema/event").ID
-export type { Data, Definition, Payload } from "@opencode-ai/schema/event"
+export type ID = import("@clawc/schema/event").ID
+export type { Data, Definition, Payload } from "@clawc/schema/event"
 
 export type Subscriber<D extends Definition = Definition> = (event: Payload<D>) => Effect.Effect<void>
 export type Unsubscribe = Effect.Effect<void>
@@ -82,7 +82,7 @@ export interface Interface {
   readonly claim: (aggregateID: string, ownerID: string) => Effect.Effect<void>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/Event") {}
+export class Service extends Context.Service<Service, Interface>()("@clawc/Event") {}
 
 export interface LayerOptions {
   readonly beforeAggregateRead?: (aggregateID: string) => Effect.Effect<void>

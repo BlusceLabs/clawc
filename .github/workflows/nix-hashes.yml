@@ -6,7 +6,7 @@ permissions:
 on:
   workflow_dispatch:
   push:
-    branches: [dev, beta]
+    branches: [dev]
     paths:
       - "bun.lock"
       - "package.json"
@@ -104,8 +104,8 @@ jobs:
       - name: Setup git committer
         uses: ./.github/actions/setup-git-committer
         with:
-          opencode-app-id: ${{ vars.OPENCODE_APP_ID }}
-          opencode-app-secret: ${{ secrets.OPENCODE_APP_SECRET }}
+          clawc-app-id: ${{ vars.OPENCODE_APP_ID }}
+          clawc-app-secret: ${{ secrets.OPENCODE_APP_SECRET }}
 
       - name: Pull latest changes
         run: |

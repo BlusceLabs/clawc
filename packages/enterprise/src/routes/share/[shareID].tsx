@@ -1,31 +1,31 @@
-import { Message, Model, Part, Session, SessionStatus, SnapshotFileDiff, UserMessage } from "@opencode-ai/sdk/v2"
-import { SessionTurn } from "@opencode-ai/session-ui/session-turn"
-import { SessionReview } from "@opencode-ai/session-ui/session-review"
-import { DataProvider } from "@opencode-ai/session-ui/context"
-import { FileComponentProvider } from "@opencode-ai/ui/context/file"
-import { WorkerPoolProvider } from "@opencode-ai/ui/context/worker-pool"
+import { Message, Model, Part, Session, SessionStatus, SnapshotFileDiff, UserMessage } from "@clawc/sdk/v2"
+import { SessionTurn } from "@clawc/session-ui/session-turn"
+import { SessionReview } from "@clawc/session-ui/session-review"
+import { DataProvider } from "@clawc/session-ui/context"
+import { FileComponentProvider } from "@clawc/ui/context/file"
+import { WorkerPoolProvider } from "@clawc/ui/context/worker-pool"
 import { createAsync, query, useParams } from "@solidjs/router"
 import { createMemo, createSignal, ErrorBoundary, For, Match, Show, Switch } from "solid-js"
 import { Share } from "~/core/share"
-import { Logo, Mark } from "@opencode-ai/ui/logo"
-import { IconButton } from "@opencode-ai/ui/icon-button"
-import { ProviderIcon } from "@opencode-ai/ui/provider-icon"
-import { iife } from "@opencode-ai/core/util/iife"
-import { Binary } from "@opencode-ai/core/util/binary"
-import { NamedError } from "@opencode-ai/core/util/error"
+import { Logo, Mark } from "@clawc/ui/logo"
+import { IconButton } from "@clawc/ui/icon-button"
+import { ProviderIcon } from "@clawc/ui/provider-icon"
+import { iife } from "@clawc/core/util/iife"
+import { Binary } from "@clawc/core/util/binary"
+import { NamedError } from "@clawc/core/util/error"
 import { DateTime } from "luxon"
 import { createStore } from "solid-js/store"
 import NotFound from "../[...404]"
-import { Tabs } from "@opencode-ai/ui/tabs"
-import { MessageNav } from "@opencode-ai/session-ui/message-nav"
-import { FileSSR } from "@opencode-ai/session-ui/file-ssr"
+import { Tabs } from "@clawc/ui/tabs"
+import { MessageNav } from "@clawc/session-ui/message-nav"
+import { FileSSR } from "@clawc/session-ui/file-ssr"
 import { clientOnly } from "@solidjs/start"
 import { Meta, Title } from "@solidjs/meta"
 import { Base64 } from "js-base64"
 import { getRequestEvent } from "solid-js/web"
 
 const ClientOnlyWorkerPoolProvider = clientOnly(() =>
-  import("@opencode-ai/session-ui/pierre/worker").then((m) => ({
+  import("@clawc/session-ui/pierre/worker").then((m) => ({
     default: (props: { children: any }) => (
       <WorkerPoolProvider pools={m.getWorkerPools()}>{props.children}</WorkerPoolProvider>
     ),
@@ -179,7 +179,7 @@ export default function () {
               modelParam = "unknown"
             }
             const version = `v${info().version}`
-            return `https://social-cards.sst.dev/opencode-share/${encodedTitle}.png?model=${modelParam}&version=${version}&id=${data().shareID}`
+            return `https://social-cards.sst.dev/clawc-share/${encodedTitle}.png?model=${modelParam}&version=${version}&id=${data().shareID}`
           })
 
           return (
@@ -187,7 +187,7 @@ export default function () {
               <Show when={info().title}>
                 <Title>{info().title} | OpenCode</Title>
               </Show>
-              <Meta name="description" content="opencode - The AI coding agent built for the terminal." />
+              <Meta name="description" content="clawc - The AI coding agent built for the terminal." />
               <Meta property="og:image" content={ogImage()} />
               <Meta name="twitter:image" content={ogImage()} />
               <ClientOnlyWorkerPoolProvider>
@@ -274,21 +274,21 @@ export default function () {
                         <div class="relative bg-background-stronger w-screen h-screen overflow-hidden flex flex-col">
                           <header class="h-12 px-6 py-2 flex items-center justify-between self-stretch bg-background-base border-b border-border-weak-base">
                             <div class="">
-                              <a href="https://opencode.ai">
+                              <a href="https://clawc.ai">
                                 <Mark />
                               </a>
                             </div>
                             <div class="flex gap-3 items-center">
                               <IconButton
                                 as={"a"}
-                                href="https://github.com/BlusceLabs/opencode"
+                                href="https://github.com/BlusceLabs/clawc"
                                 target="_blank"
                                 icon="github"
                                 variant="ghost"
                               />
                               <IconButton
                                 as={"a"}
-                                href="https://opencode.ai/discord"
+                                href="https://clawc.ai/discord"
                                 target="_blank"
                                 icon="discord"
                                 variant="ghost"

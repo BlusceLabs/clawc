@@ -1,10 +1,10 @@
-import { SessionMessage } from "@opencode-ai/schema/session-message"
-import { SessionInput } from "@opencode-ai/schema/session-input"
-import { Prompt } from "@opencode-ai/schema/prompt"
-import { Session } from "@opencode-ai/schema/session"
-import { Project } from "@opencode-ai/schema/project"
-import { AbsolutePath, NonNegativeInt, PositiveInt, RelativePath, statics } from "@opencode-ai/schema/schema"
-import { Workspace } from "@opencode-ai/schema/workspace"
+import { SessionMessage } from "@clawc/schema/session-message"
+import { SessionInput } from "@clawc/schema/session-input"
+import { Prompt } from "@clawc/schema/prompt"
+import { Session } from "@clawc/schema/session"
+import { Project } from "@clawc/schema/project"
+import { AbsolutePath, NonNegativeInt, PositiveInt, RelativePath, statics } from "@clawc/schema/schema"
+import { Workspace } from "@clawc/schema/workspace"
 import { Context, Encoding, Result, Schema, Struct } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiMiddleware, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import {
@@ -16,11 +16,11 @@ import {
   SessionNotFoundError,
   UnknownError,
 } from "../errors"
-import { Agent } from "@opencode-ai/schema/agent"
-import { Model } from "@opencode-ai/schema/model"
-import { Location } from "@opencode-ai/schema/location"
-import { Revert } from "@opencode-ai/schema/revert"
-import { SessionEvent } from "@opencode-ai/schema/session-event"
+import { Agent } from "@clawc/schema/agent"
+import { Model } from "@clawc/schema/model"
+import { Location } from "@clawc/schema/location"
+import { Revert } from "@clawc/schema/revert"
+import { SessionEvent } from "@clawc/schema/session-event"
 
 const SessionsQueryFields = {
   workspace: Workspace.ID.pipe(Schema.optional),

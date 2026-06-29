@@ -3,15 +3,15 @@ import { describe, expect } from "bun:test"
 import fs from "fs/promises"
 import path from "path"
 import { Effect, Layer } from "effect"
-import { Config } from "@opencode-ai/core/config"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { Git } from "@opencode-ai/core/git"
-import { Global } from "@opencode-ai/core/global"
-import { Location } from "@opencode-ai/core/location"
-import { Project } from "@opencode-ai/core/project"
-import { AbsolutePath, RelativePath } from "@opencode-ai/core/schema"
-import { Snapshot } from "@opencode-ai/core/snapshot"
-import { Hash } from "@opencode-ai/core/util/hash"
+import { Config } from "@clawc/core/config"
+import { FSUtil } from "@clawc/core/fs-util"
+import { Git } from "@clawc/core/git"
+import { Global } from "@clawc/core/global"
+import { Location } from "@clawc/core/location"
+import { Project } from "@clawc/core/project"
+import { AbsolutePath, RelativePath } from "@clawc/core/schema"
+import { Snapshot } from "@clawc/core/snapshot"
+import { Hash } from "@clawc/core/util/hash"
 import { tmpdir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
 
@@ -30,7 +30,7 @@ describe("Snapshot", () => {
             await $`git init`.cwd(project).quiet()
             await $`git config core.fsmonitor false`.cwd(project).quiet()
             await $`git config commit.gpgsign false`.cwd(project).quiet()
-            await $`git config user.email test@opencode.test`.cwd(project).quiet()
+            await $`git config user.email test@clawc.test`.cwd(project).quiet()
             await $`git config user.name Test`.cwd(project).quiet()
             await $`git add .`.cwd(project).quiet()
             await $`git commit -m initial`.cwd(project).quiet()
@@ -99,7 +99,7 @@ describe("Snapshot", () => {
             await $`git init`.cwd(project).quiet()
             await $`git config core.fsmonitor false`.cwd(project).quiet()
             await $`git config commit.gpgsign false`.cwd(project).quiet()
-            await $`git config user.email test@opencode.test`.cwd(project).quiet()
+            await $`git config user.email test@clawc.test`.cwd(project).quiet()
             await $`git config user.name Test`.cwd(project).quiet()
             await $`git add .`.cwd(project).quiet()
             await $`git commit -m initial`.cwd(project).quiet()
@@ -146,7 +146,7 @@ describe("Snapshot", () => {
             await $`git init`.cwd(project).quiet()
             await $`git config core.fsmonitor false`.cwd(project).quiet()
             await $`git config commit.gpgsign false`.cwd(project).quiet()
-            await $`git config user.email test@opencode.test`.cwd(project).quiet()
+            await $`git config user.email test@clawc.test`.cwd(project).quiet()
             await $`git config user.name Test`.cwd(project).quiet()
             await $`git add .`.cwd(project).quiet()
             await $`git commit -m initial`.cwd(project).quiet()

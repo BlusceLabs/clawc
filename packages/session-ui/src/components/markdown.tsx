@@ -1,7 +1,7 @@
-import { useMarked } from "@opencode-ai/ui/context/marked"
-import { useI18n } from "@opencode-ai/ui/context/i18n"
+import { useMarked } from "@clawc/ui/context/marked"
+import { useI18n } from "@clawc/ui/context/i18n"
 import morphdom from "morphdom"
-import { checksum } from "@opencode-ai/core/util/encode"
+import { checksum } from "@clawc/core/util/encode"
 import {
   ComponentProps,
   createEffect,

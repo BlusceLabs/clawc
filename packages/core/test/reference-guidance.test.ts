@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { AbsolutePath } from "@opencode-ai/core/schema"
-import { Reference } from "@opencode-ai/core/reference"
-import { ReferenceGuidance } from "@opencode-ai/core/reference/guidance"
-import { SystemContext } from "@opencode-ai/core/system-context/index"
+import { AbsolutePath } from "@clawc/core/schema"
+import { Reference } from "@clawc/core/reference"
+import { ReferenceGuidance } from "@clawc/core/reference/guidance"
+import { SystemContext } from "@clawc/core/system-context/index"
 import { it } from "./lib/effect"
 
 describe("ReferenceGuidance", () => {

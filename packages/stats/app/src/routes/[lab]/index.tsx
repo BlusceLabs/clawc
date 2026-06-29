@@ -5,7 +5,7 @@ import {
   type LabUsageModelEntry,
   type ModelUsagePoint,
   type StatsLabData,
-} from "@opencode-ai/stats-core/domain/home"
+} from "@clawc/stats-core/domain/home"
 import { createAsync, query, useParams } from "@solidjs/router"
 import { createMemo, createSignal, For, onMount, Show, type JSX } from "solid-js"
 import { getRequestEvent } from "solid-js/web"
@@ -98,7 +98,7 @@ export default function StatsLab() {
       <Meta name="description" content={labDescription()} />
       <LocaleLinks path={labPath()} />
       <Meta property="og:type" content="website" />
-      <Meta property="og:site_name" content="OpenCode" />
+      <Meta property="og:site_name" content="ClawC" />
       <Meta property="og:title" content={labTitle()} />
       <Meta property="og:description" content={labDescription()} />
       <Meta property="og:url" content={labUrl()} />

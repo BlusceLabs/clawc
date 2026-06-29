@@ -1,11 +1,11 @@
 import { NodeFileSystem } from "@effect/platform-node"
-import { compile, emitEffectImported, emitPromise, write } from "@opencode-ai/httpapi-codegen"
-import { Api } from "@opencode-ai/server/api"
+import { compile, emitEffectImported, emitPromise, write } from "@clawc/httpapi-codegen"
+import { Api } from "@clawc/server/api"
 import { Effect } from "effect"
 import { HttpApi } from "effect/unstable/httpapi"
 import { fileURLToPath } from "url"
 
-const contract = compile(HttpApi.make("opencode-client").add(Api.groups["server.session"]), {
+const contract = compile(HttpApi.make("clawc-client").add(Api.groups["server.session"]), {
   groupNames: { "server.session": "sessions" },
 })
 

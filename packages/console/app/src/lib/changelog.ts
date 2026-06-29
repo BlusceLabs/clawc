@@ -39,10 +39,10 @@ export type ChangelogData = {
 }
 
 export async function loadChangelog(): Promise<ChangelogData> {
-  const response = await fetch("https://api.github.com/repos/BlusceLabs/opencode/releases?per_page=20", {
+  const response = await fetch("https://api.github.com/repos/BlusceLabs/clawc/releases?per_page=20", {
     headers: {
       Accept: "application/vnd.github.v3+json",
-      "User-Agent": "OpenCode-Console",
+      "User-Agent": "ClawC-Console",
     },
     cf: {
       // best-effort edge caching (ignored outside Cloudflare)

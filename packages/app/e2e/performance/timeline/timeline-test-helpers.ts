@@ -1,5 +1,5 @@
 import type { Page } from "@playwright/test"
-import { base64Encode } from "@opencode-ai/core/util/encode"
+import { base64Encode } from "@clawc/core/util/encode"
 import { mockOpenCodeServer } from "../../utils/mock-server"
 import { fixture, pageMessages } from "./session-timeline-stress.fixture"
 
@@ -38,14 +38,14 @@ export async function installStressSessionTabs(page: Page, input?: { draftID?: s
   await page.addInitScript(
     ({ directory, sessionIDs, dirBase64, server, draftID }) => {
       localStorage.setItem(
-        "opencode.global.dat:server",
+        "clawc.global.dat:server",
         JSON.stringify({
           projects: { local: [{ worktree: directory, expanded: true }] },
           lastProject: { local: directory },
         }),
       )
       localStorage.setItem(
-        "opencode.global.dat:tabs",
+        "clawc.global.dat:tabs",
         JSON.stringify([
           ...sessionIDs.map((sessionId) => ({
             type: "session",

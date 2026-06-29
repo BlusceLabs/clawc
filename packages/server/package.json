@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@opencode-ai/server",
-  "version": "1.17.11",
+  "name": "@clawc/server",
+  "version": "0.0.4",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -12,8 +12,8 @@
     "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
-    "@opencode-ai/core": "workspace:*",
-    "@opencode-ai/protocol": "workspace:*",
+    "@clawc/core": "workspace:*",
+    "@clawc/protocol": "workspace:*",
     "drizzle-orm": "catalog:",
     "effect": "catalog:"
   },

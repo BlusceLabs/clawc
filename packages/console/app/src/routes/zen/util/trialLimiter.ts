@@ -1,7 +1,7 @@
-import { Database, eq, sql } from "@opencode-ai/console-core/drizzle/index.js"
-import { IpTable } from "@opencode-ai/console-core/schema/ip.sql.js"
+import { Database, eq, sql } from "@clawc/console-core/drizzle/index.js"
+import { IpTable } from "@clawc/console-core/schema/ip.sql.js"
 import { UsageInfo } from "./provider/provider"
-import { Subscription } from "@opencode-ai/console-core/subscription.js"
+import { Subscription } from "@clawc/console-core/subscription.js"
 
 export function createTrialLimiter(trialProviders: string[] | undefined, ip: string) {
   if (!trialProviders) return

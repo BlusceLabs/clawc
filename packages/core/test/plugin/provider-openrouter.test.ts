@@ -1,13 +1,13 @@
-import { AISDK } from "@opencode-ai/core/aisdk"
+import { AISDK } from "@clawc/core/aisdk"
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@opencode-ai/core/catalog"
-import { ModelV2 } from "@opencode-ai/core/model"
-import { PluginV2 } from "@opencode-ai/core/plugin"
-import { PluginHost } from "@opencode-ai/core/plugin/host"
-import { ProviderPlugins } from "@opencode-ai/core/plugin/provider"
-import { OpenRouterPlugin } from "@opencode-ai/core/plugin/provider/openrouter"
-import { ProviderV2 } from "@opencode-ai/core/provider"
+import { Catalog } from "@clawc/core/catalog"
+import { ModelV2 } from "@clawc/core/model"
+import { PluginV2 } from "@clawc/core/plugin"
+import { PluginHost } from "@clawc/core/plugin/host"
+import { ProviderPlugins } from "@clawc/core/plugin/provider"
+import { OpenRouterPlugin } from "@clawc/core/plugin/provider/openrouter"
+import { ProviderV2 } from "@clawc/core/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
 
@@ -39,8 +39,8 @@ describe("OpenRouterPlugin", () => {
 
       expect((yield* catalog.provider.get(ProviderV2.ID.openrouter))?.request.headers).toEqual({
         Existing: "value",
-        "HTTP-Referer": "https://opencode.ai/",
-        "X-Title": "opencode",
+        "HTTP-Referer": "https://clawc.ai/",
+        "X-Title": "clawc",
       })
       expect((yield* catalog.provider.get(ProviderV2.ID.make("nvidia")))?.request.headers).toEqual({})
     }),

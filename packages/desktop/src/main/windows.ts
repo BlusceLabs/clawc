@@ -1,6 +1,6 @@
 import windowState from "electron-window-state"
-import { resolveThemeVariant } from "@opencode-ai/ui/theme/resolve"
-import type { DesktopTheme } from "@opencode-ai/ui/theme/types"
+import { resolveThemeVariant } from "@clawc/ui/theme/resolve"
+import type { DesktopTheme } from "@clawc/ui/theme/types"
 import varthThemeJson from "../../../ui/src/theme/themes/varth.json"
 import { app, BrowserWindow, dialog, net, nativeImage, nativeTheme, protocol } from "electron"
 import { dirname, isAbsolute, join, relative, resolve } from "node:path"

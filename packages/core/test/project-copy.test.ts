@@ -4,15 +4,15 @@ import fs from "fs/promises"
 import path from "path"
 import { eq } from "drizzle-orm"
 import { Effect, Fiber, Layer, Stream } from "effect"
-import { AbsolutePath } from "@opencode-ai/core/schema"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { Git } from "@opencode-ai/core/git"
-import { Database } from "@opencode-ai/core/database/database"
-import { EventV2 } from "@opencode-ai/core/event"
-import { Project } from "@opencode-ai/core/project"
-import { ProjectDirectoryTable, ProjectTable } from "@opencode-ai/core/project/sql"
-import { ProjectCopy } from "@opencode-ai/core/project/copy"
-import { ProjectDirectories } from "@opencode-ai/core/project/directories"
+import { AbsolutePath } from "@clawc/core/schema"
+import { FSUtil } from "@clawc/core/fs-util"
+import { Git } from "@clawc/core/git"
+import { Database } from "@clawc/core/database/database"
+import { EventV2 } from "@clawc/core/event"
+import { Project } from "@clawc/core/project"
+import { ProjectDirectoryTable, ProjectTable } from "@clawc/core/project/sql"
+import { ProjectCopy } from "@clawc/core/project/copy"
+import { ProjectDirectories } from "@clawc/core/project/directories"
 import { tmpdir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
 
@@ -37,7 +37,7 @@ async function initRepo(directory: string) {
   await $`git init`.cwd(directory).quiet()
   await $`git config core.fsmonitor false`.cwd(directory).quiet()
   await $`git config commit.gpgsign false`.cwd(directory).quiet()
-  await $`git config user.email test@opencode.test`.cwd(directory).quiet()
+  await $`git config user.email test@clawc.test`.cwd(directory).quiet()
   await $`git config user.name Test`.cwd(directory).quiet()
   await $`git commit --allow-empty -m root`.cwd(directory).quiet()
 }

@@ -271,7 +271,7 @@ describe("HttpApiCodegen.generate", () => {
         ),
       ),
     )
-    const directory = await mkdtemp(join(tmpdir(), "opencode-httpapi-codegen-"))
+    const directory = await mkdtemp(join(tmpdir(), "clawc-httpapi-codegen-"))
 
     try {
       await Promise.all(output.files.map((file) => Bun.write(join(directory, file.path), file.content)))
@@ -304,7 +304,7 @@ describe("HttpApiCodegen.generate", () => {
         ),
       ),
     )
-    const directory = await mkdtemp(join(tmpdir(), "opencode-httpapi-codegen-"))
+    const directory = await mkdtemp(join(tmpdir(), "clawc-httpapi-codegen-"))
 
     try {
       await Promise.all(output.files.map((file) => Bun.write(join(directory, file.path), file.content)))
@@ -334,7 +334,7 @@ describe("HttpApiCodegen.generate", () => {
         ),
       ),
     )
-    const directory = await mkdtemp(join(tmpdir(), "opencode-httpapi-codegen-"))
+    const directory = await mkdtemp(join(tmpdir(), "clawc-httpapi-codegen-"))
 
     try {
       await Promise.all(output.files.map((file) => Bun.write(join(directory, file.path), file.content)))
@@ -371,7 +371,7 @@ describe("HttpApiCodegen.generate", () => {
         ),
       ),
     )
-    const directory = await mkdtemp(join(tmpdir(), "opencode-httpapi-codegen-"))
+    const directory = await mkdtemp(join(tmpdir(), "clawc-httpapi-codegen-"))
 
     try {
       await Promise.all(output.files.map((file) => Bun.write(join(directory, file.path), file.content)))
@@ -402,7 +402,7 @@ describe("HttpApiCodegen.generate", () => {
         ),
       ),
     )
-    const directory = await mkdtemp(join(tmpdir(), "opencode-httpapi-codegen-"))
+    const directory = await mkdtemp(join(tmpdir(), "clawc-httpapi-codegen-"))
 
     try {
       await Promise.all(output.files.map((file) => Bun.write(join(directory, file.path), file.content)))

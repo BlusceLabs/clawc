@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Effect, Exit, Layer, Scope } from "effect"
-import { AbsolutePath } from "@opencode-ai/core/schema"
-import { Global } from "@opencode-ai/core/global"
-import { Reference } from "@opencode-ai/core/reference"
-import { Repository } from "@opencode-ai/core/repository"
-import { RepositoryCache } from "@opencode-ai/core/repository-cache"
-import { EventV2 } from "@opencode-ai/core/event"
+import { AbsolutePath } from "@clawc/core/schema"
+import { Global } from "@clawc/core/global"
+import { Reference } from "@clawc/core/reference"
+import { Repository } from "@clawc/core/repository"
+import { RepositoryCache } from "@clawc/core/repository-cache"
+import { EventV2 } from "@clawc/core/event"
 import { it } from "./lib/effect"
 
 const cache = Layer.mock(RepositoryCache.Service, {

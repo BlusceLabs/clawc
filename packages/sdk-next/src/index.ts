@@ -1,7 +1,7 @@
-export * as OpenCode from "./opencode"
+export * as OpenCode from "./clawc"
 export * as Tool from "./tool"
 
-export { ClientError } from "@opencode-ai/client/effect"
+export { ClientError } from "@clawc/client/effect"
 export {
   AbsolutePath,
   Agent,
@@ -13,4 +13,4 @@ export {
   Session,
   SessionInput,
   SessionMessage,
-} from "@opencode-ai/client/effect"
+} from "@clawc/client/effect"

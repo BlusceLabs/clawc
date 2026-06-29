@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@opencode-ai/core/catalog"
-import { PluginV2 } from "@opencode-ai/core/plugin"
-import { PluginHost } from "@opencode-ai/core/plugin/host"
-import { ProviderPlugins } from "@opencode-ai/core/plugin/provider"
-import { NvidiaPlugin } from "@opencode-ai/core/plugin/provider/nvidia"
-import { ProviderV2 } from "@opencode-ai/core/provider"
+import { Catalog } from "@clawc/core/catalog"
+import { PluginV2 } from "@clawc/core/plugin"
+import { PluginHost } from "@clawc/core/plugin/host"
+import { ProviderPlugins } from "@clawc/core/plugin/provider"
+import { NvidiaPlugin } from "@clawc/core/plugin/provider/nvidia"
+import { ProviderV2 } from "@clawc/core/provider"
 import { testEffect } from "../lib/effect"
 import { PluginTestLayer } from "./fixture"
 
@@ -39,8 +39,8 @@ describe("NvidiaPlugin", () => {
       yield* addPlugin()
       expect((yield* catalog.provider.get(ProviderV2.ID.make("nvidia")))?.request.headers).toEqual({
         Existing: "value",
-        "HTTP-Referer": "https://opencode.ai/",
-        "X-Title": "opencode",
+        "HTTP-Referer": "https://clawc.ai/",
+        "X-Title": "clawc",
         "X-BILLING-INVOKE-ORIGIN": "OpenCode",
       })
       expect((yield* catalog.provider.get(ProviderV2.ID.openrouter))?.request.headers).toEqual({})
@@ -62,8 +62,8 @@ describe("NvidiaPlugin", () => {
       yield* addPlugin()
 
       expect((yield* catalog.provider.get(ProviderV2.ID.make("nvidia")))?.request.headers).toEqual({
-        "HTTP-Referer": "https://opencode.ai/",
-        "X-Title": "opencode",
+        "HTTP-Referer": "https://clawc.ai/",
+        "X-Title": "clawc",
         "X-BILLING-INVOKE-ORIGIN": "OpenCode",
       })
     }),
@@ -88,8 +88,8 @@ describe("NvidiaPlugin", () => {
       yield* addPlugin()
 
       expect((yield* catalog.provider.get(ProviderV2.ID.make("nvidia")))?.request.headers).toEqual({
-        "HTTP-Referer": "https://opencode.ai/",
-        "X-Title": "opencode",
+        "HTTP-Referer": "https://clawc.ai/",
+        "X-Title": "clawc",
         "X-BILLING-INVOKE-ORIGIN": "CustomOrigin",
       })
     }),

@@ -1,4 +1,4 @@
-import { base64Encode } from "@opencode-ai/core/util/encode"
+import { base64Encode } from "@clawc/core/util/encode"
 import { expect, test, type Page } from "@playwright/test"
 import { mockOpenCodeServer } from "../utils/mock-server"
 import { expectSessionTitle } from "../utils/waits"
@@ -97,7 +97,7 @@ async function mockServer(
     provider: {
       all: [
         {
-          id: "opencode",
+          id: "clawc",
           name: "OpenCode",
           models: {
             "claude-opus-4-6": {
@@ -108,8 +108,8 @@ async function mockServer(
           },
         },
       ],
-      connected: ["opencode"],
-      default: { providerID: "opencode", modelID: "claude-opus-4-6" },
+      connected: ["clawc"],
+      default: { providerID: "clawc", modelID: "claude-opus-4-6" },
     },
     sessions: [
       {

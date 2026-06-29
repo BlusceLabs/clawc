@@ -16,9 +16,9 @@ import { Dynamic } from "solid-js/web"
 import { useNavigate } from "@solidjs/router"
 import { useMutation } from "@tanstack/solid-query"
 import { createVirtualizer, defaultRangeExtractor, elementScroll, type VirtualItem } from "@tanstack/solid-virtual"
-import { Accordion } from "@opencode-ai/ui/accordion"
-import { Button } from "@opencode-ai/ui/button"
-import { Card } from "@opencode-ai/ui/card"
+import { Accordion } from "@clawc/ui/accordion"
+import { Button } from "@clawc/ui/button"
+import { Card } from "@clawc/ui/card"
 import {
   ContextToolGroup,
   Message,
@@ -26,35 +26,35 @@ import {
   Part as MessagePart,
   partDefaultOpen,
   type UserActions,
-} from "@opencode-ai/session-ui/message-part"
-import { DiffChanges } from "@opencode-ai/ui/diff-changes"
-import { FileIcon } from "@opencode-ai/ui/file-icon"
-import { Icon } from "@opencode-ai/ui/icon"
-import { IconButton } from "@opencode-ai/ui/icon-button"
-import { DropdownMenu } from "@opencode-ai/ui/dropdown-menu"
-import { Dialog } from "@opencode-ai/ui/dialog"
-import { InlineInput } from "@opencode-ai/ui/inline-input"
-import { SessionRetry } from "@opencode-ai/session-ui/session-retry"
-import { ScrollView } from "@opencode-ai/ui/scroll-view"
-import { StickyAccordionHeader } from "@opencode-ai/ui/sticky-accordion-header"
-import { TextField } from "@opencode-ai/ui/text-field"
-import { TextReveal } from "@opencode-ai/ui/text-reveal"
-import { TextShimmer } from "@opencode-ai/ui/text-shimmer"
+} from "@clawc/session-ui/message-part"
+import { DiffChanges } from "@clawc/ui/diff-changes"
+import { FileIcon } from "@clawc/ui/file-icon"
+import { Icon } from "@clawc/ui/icon"
+import { IconButton } from "@clawc/ui/icon-button"
+import { DropdownMenu } from "@clawc/ui/dropdown-menu"
+import { Dialog } from "@clawc/ui/dialog"
+import { InlineInput } from "@clawc/ui/inline-input"
+import { SessionRetry } from "@clawc/session-ui/session-retry"
+import { ScrollView } from "@clawc/ui/scroll-view"
+import { StickyAccordionHeader } from "@clawc/ui/sticky-accordion-header"
+import { TextField } from "@clawc/ui/text-field"
+import { TextReveal } from "@clawc/ui/text-reveal"
+import { TextShimmer } from "@clawc/ui/text-shimmer"
 import type {
   AssistantMessage,
   Message as MessageType,
   Part as PartType,
   ToolPart,
   UserMessage,
-} from "@opencode-ai/sdk/v2"
+} from "@clawc/sdk/v2"
 import { showToast } from "@/utils/toast"
-import { getDirectory, getFilename } from "@opencode-ai/core/util/path"
+import { getDirectory, getFilename } from "@clawc/core/util/path"
 import { Popover as KobaltePopover } from "@kobalte/core/popover"
-import { normalize } from "@opencode-ai/session-ui/session-diff"
-import { useFileComponent } from "@opencode-ai/ui/context/file"
+import { normalize } from "@clawc/session-ui/session-diff"
+import { useFileComponent } from "@clawc/ui/context/file"
 import { shouldMarkBoundaryGesture, normalizeWheelDelta } from "@/pages/session/message-gesture"
 import { SessionContextUsage } from "@/components/session-context-usage"
-import { useDialog } from "@opencode-ai/ui/context/dialog"
+import { useDialog } from "@clawc/ui/context/dialog"
 import { useLanguage } from "@/context/language"
 import { useSessionKey } from "@/pages/session/session-layout"
 import { useServerSDK } from "@/context/server-sdk"

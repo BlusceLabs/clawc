@@ -1,4 +1,4 @@
-import type { WslOpencodeCheck, WslServerRuntime } from "./types"
+import type { WslClawcCheck, WslServerRuntime } from "./types"
 
 export const wslRuntimeRetryable = (runtime: WslServerRuntime) =>
   runtime.kind === "failed" || runtime.kind === "stopped"
@@ -6,13 +6,13 @@ export const wslRuntimeRetryable = (runtime: WslServerRuntime) =>
 export async function enterWslOpencodeStep(
   distro: string,
   probe: (distro: string) => Promise<unknown>,
-  select: (step: "opencode") => void,
+  select: (step: "clawc") => void,
 ) {
   await probe(distro)
-  select("opencode")
+  select("clawc")
 }
 
-export function wslOpencodeAction(check?: WslOpencodeCheck) {
+export function wslClawcAction(check?: WslClawcCheck) {
   if (!check) return
   if (!check.resolvedPath) return "Install OpenCode"
   if (check.matchesDesktop === false) return "Update OpenCode"

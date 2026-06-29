@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@opencode-ai/tui",
-  "version": "1.17.11",
+  "name": "@clawc/tui",
+  "version": "0.0.4",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -47,10 +47,10 @@
     "./component/spinner": "./src/component/spinner.tsx"
   },
   "dependencies": {
-    "@opencode-ai/core": "workspace:*",
-    "@opencode-ai/plugin": "workspace:*",
-    "@opencode-ai/sdk": "workspace:*",
-    "@opencode-ai/ui": "workspace:*",
+    "@clawc/core": "workspace:*",
+    "@clawc/plugin": "workspace:*",
+    "@clawc/sdk": "workspace:*",
+    "@clawc/ui": "workspace:*",
     "@opentui/core": "catalog:",
     "@opentui/keymap": "catalog:",
     "@opentui/solid": "catalog:",

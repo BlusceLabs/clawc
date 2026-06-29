@@ -72,7 +72,7 @@ export type DesktopMenu = {
 export const DESKTOP_MENU: DesktopMenu[] = [
   {
     id: "app",
-    label: "OpenCode",
+    label: "ClawC",
     platforms: ["macos"],
     items: [
       { type: "item", role: "about" },
@@ -200,7 +200,7 @@ export const DESKTOP_MENU: DesktopMenu[] = [
     id: "help",
     label: "Help",
     items: [
-      { type: "item", label: "OpenCode Documentation", href: "https://clawc.ai/docs" },
+      { type: "item", label: "ClawC Documentation", href: "https://clawc.ai/docs" },
       { type: "item", label: "Support Forum", href: "https://discord.com/invite/clawc" },
       { type: "item", label: "Export Logs...", command: "logs.export" },
       { type: "separator" },

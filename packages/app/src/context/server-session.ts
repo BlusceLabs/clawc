@@ -2,7 +2,7 @@ import { Binary } from "@clawc/core/util/binary"
 import { retry } from "@clawc/core/util/retry"
 import type {
   Message,
-  OpencodeClient,
+  ClawcClient,
   Part,
   PermissionRequest,
   QuestionRequest,
@@ -75,7 +75,7 @@ function merge<T extends { id: string }>(a: readonly T[], b: readonly T[]) {
   return [...items.values()].sort((x, y) => cmp(x.id, y.id))
 }
 
-export function createServerSession(client: OpencodeClient) {
+export function createServerSession(client: ClawcClient) {
   const [data, setData] = createStore({
     info: {} as Record<string, Session | undefined>,
     session_status: {} as Record<string, SessionStatus>,

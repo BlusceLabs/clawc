@@ -7,7 +7,7 @@ import { createStore } from "solid-js/store"
 import { useLanguage } from "@/context/language"
 import { usePlatform } from "@/context/platform"
 import { useWslServers } from "./context"
-import { enterWslOpencodeStep } from "./settings-model"
+import { enterWslClawcStep } from "./settings-model"
 
 type WslServerStep = "wsl" | "distro" | "clawc"
 
@@ -113,7 +113,7 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
     () => installableDistros().find((item) => item.name === store.installTarget) ?? installableDistros()[0] ?? null,
   )
   const installingDistro = createMemo(() => current()?.job?.kind === "install-distro")
-  const installingOpencode = createMemo(() => {
+  const installingClawc = createMemo(() => {
     const job = current()?.job
     return job?.kind === "install-clawc" && job.distro === selectedDistro()
   })
@@ -148,7 +148,7 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
     }
     if (!distro || !distroReady()) return null
     if (!state.clawcChecks[distro]) {
-      return { key: `probe-clawc:${distro}`, run: () => api.probeOpencode(distro) }
+      return { key: `probe-clawc:${distro}`, run: () => api.probeClawc(distro) }
     }
     return null
   })
@@ -199,23 +199,23 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
 
   const clawcMessage = createMemo(() => {
     const state = current()
-    if (!state) return language.t("wsl.onboarding.checkingOpencode")
+    if (!state) return language.t("wsl.onboarding.checkingClawc")
     const distro = selectedDistro()
     if (state.job?.kind === "install-clawc") {
       return distro
-        ? language.t("wsl.onboarding.updatingOpencodeIn", { distro })
-        : language.t("wsl.onboarding.updatingOpencode")
+        ? language.t("wsl.onboarding.updatingClawcIn", { distro })
+        : language.t("wsl.onboarding.updatingClawc")
     }
     if (state.job?.kind === "probe-clawc") {
       return distro
-        ? language.t("wsl.onboarding.checkingOpencodeIn", { distro })
-        : language.t("wsl.onboarding.checkingOpencode")
+        ? language.t("wsl.onboarding.checkingClawcIn", { distro })
+        : language.t("wsl.onboarding.checkingClawc")
     }
     if (clawcCheck()?.error) return clawcCheck()!.error
     if (clawcCheck()?.matchesDesktop === false) {
       return distro
-        ? language.t("wsl.onboarding.updateOpencodeIn", { distro })
-        : language.t("wsl.onboarding.updateOpencode")
+        ? language.t("wsl.onboarding.updateClawcIn", { distro })
+        : language.t("wsl.onboarding.updateClawc")
     }
     if (ClawcReady()) {
       return distro
@@ -223,7 +223,7 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
         : language.t("wsl.onboarding.ClawcReady")
     }
     return distro
-      ? language.t("wsl.onboarding.installOpencodeIn", { distro })
+      ? language.t("wsl.onboarding.installClawcIn", { distro })
       : language.t("wsl.onboarding.chooseDistroFirst")
   })
 
@@ -246,10 +246,10 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
     setStore("step", undefined)
   }
 
-  const openOpencodeStep = () => {
+  const openClawcStep = () => {
     const distro = selectedDistro()
     if (!distro) return
-    void run(() => enterWslOpencodeStep(distro, api.probeOpencode, (step) => setStore("step", step)))
+    void run(() => enterWslClawcStep(distro, api.probeClawc, (step) => setStore("step", step)))
   }
 
   const finish = async () => {
@@ -528,7 +528,7 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
                     variant="secondary"
                     size="large"
                     disabled={busy() || !selectedDistro() || !distroReady()}
-                    onClick={openOpencodeStep}
+                    onClick={openClawcStep}
                   >
                     {language.t("wsl.onboarding.next")}
                   </Button>
@@ -546,7 +546,7 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
                         variant="ghost"
                         size="large"
                         disabled={busy()}
-                        onClick={() => runSelectedDistro((distro) => api.probeOpencode(distro))}
+                        onClick={() => runSelectedDistro((distro) => api.probeClawc(distro))}
                       >
                         {language.t("wsl.onboarding.refresh")}
                       </Button>
@@ -556,14 +556,14 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
                         variant="secondary"
                         size="large"
                         disabled={busy()}
-                        onClick={() => runSelectedDistro((distro) => api.installOpencode(distro))}
+                        onClick={() => runSelectedDistro((distro) => api.installClawc(distro))}
                       >
-                        <Show when={installingOpencode()}>
+                        <Show when={installingClawc()}>
                           <Spinner class="size-4 shrink-0" />
                         </Show>
                         {clawcCheck()?.resolvedPath
-                          ? language.t("wsl.onboarding.updateOpencode")
-                          : language.t("wsl.onboarding.installOpencode")}
+                          ? language.t("wsl.onboarding.updateClawc")
+                          : language.t("wsl.onboarding.installClawc")}
                       </Button>
                     </Show>
                   </div>

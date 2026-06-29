@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { enterWslOpencodeStep, wslClawcAction, wslRuntimeRetryable } from "./settings-model"
+import { enterWslClawcStep, wslClawcAction, wslRuntimeRetryable } from "./settings-model"
 
 describe("WSL server settings presentation", () => {
   test("retries only settled unsuccessful runtimes", () => {
@@ -11,7 +11,7 @@ describe("WSL server settings presentation", () => {
     expect(wslRuntimeRetryable({ kind: "stopped" })).toBe(true)
   })
 
-  test("offers install and update only when OpenCode needs attention", () => {
+  test("offers install and update only when ClawC needs attention", () => {
     expect(wslClawcAction(undefined)).toBeUndefined()
     expect(
       wslClawcAction({
@@ -22,7 +22,7 @@ describe("WSL server settings presentation", () => {
         matchesDesktop: null,
         error: null,
       }),
-    ).toBe("Install OpenCode")
+    ).toBe("Install ClawC")
     expect(
       wslClawcAction({
         distro: "Debian",
@@ -32,7 +32,7 @@ describe("WSL server settings presentation", () => {
         matchesDesktop: false,
         error: null,
       }),
-    ).toBe("Update OpenCode")
+    ).toBe("Update ClawC")
     expect(
       wslClawcAction({
         distro: "Debian",
@@ -45,9 +45,9 @@ describe("WSL server settings presentation", () => {
     ).toBeUndefined()
   })
 
-  test("probes the selected distro before entering the OpenCode step", async () => {
+  test("probes the selected distro before entering the ClawC step", async () => {
     const calls: string[] = []
-    await enterWslOpencodeStep(
+    await enterWslClawcStep(
       "Debian",
       async (distro) => calls.push(distro),
       (step) => calls.push(step),

@@ -5,8 +5,8 @@
 
 ## Quick Stats
 
-- **Total occurrences of `opencode` / `@clawc`:** ~22,692
-- **Files affected:** ~2,311 (excluding `node_modules`, `.git`, `.opencode`, build dirs, lockfiles)
+- **Total occurrences of `clawc` / `@clawc`:** ~22,692
+- **Files affected:** ~2,311 (excluding `node_modules`, `.git`, `.clawc`, build dirs, lockfiles)
 
 ## Top Surface Areas
 
@@ -19,8 +19,8 @@
 | JSON configs | 137 files |
 | GitHub workflows | 22 files |
 | `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `LICENSE` | public-facing files |
-| `install` script | curl path points to `BlusceLabs/opencode` |
-| `package.json` | root package name `opencode`, workspace deps `@clawc/*` |
+| `install` script | curl path points to `BlusceLabs/clawc` |
+| `package.json` | root package name `clawc`, workspace deps `@clawc/*` |
 | `bunfig.toml`, `sst.config.ts`, `turbo.json` | tooling configs |
 
 ## Package Scope to Decide
@@ -43,7 +43,7 @@ Most-referenced packages (from code + docs + specs):
 
 ## Open Questions Before Implementation
 
-1. **Scope:** repo-only, package-names too, or full rebrand (CLI, `~/.opencode`, binary, desktop app, docs URLs, Discord)?
+1. **Scope:** repo-only, package-names too, or full rebrand (CLI, `~/.clawc`, binary, desktop app, docs URLs, Discord)?
 2. **New npm scope:** `@varth/*` or `@clawc/*`?
 3. **GitHub org/repo:** keep `BlusceLabs` or also rename org?
 4. **Breaking changes:** single atomic rename, or staged (publish `@varth/*` packages, deprecate `@clawc/*`)?
@@ -52,7 +52,7 @@ Most-referenced packages (from code + docs + specs):
 
 1. Decide new names and scope.
 2. Automated string replacement script with human review for risky files.
-3. Rename directories where package folder name includes `opencode` (e.g., `packages/opencode`).
+3. Rename directories where package folder name includes `clawc` (e.g., `packages/clawc`).
 4. Regenerate generated files (`packages/client/src/generated`, legacy JS SDK, etc.).
 5. Update lockfile (`bun.lock`).
 6. Run typecheck, lint, and a subset of tests.

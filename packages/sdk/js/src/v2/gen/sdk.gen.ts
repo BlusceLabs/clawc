@@ -1349,9 +1349,9 @@ export class Global extends HeyApiClient {
   }
 
   /**
-   * Upgrade opencode
+   * Upgrade clawc
    *
-   * Upgrade opencode to the specified version or latest if not specified.
+   * Upgrade clawc to the specified version or latest if not specified.
    */
   public upgrade<ThrowOnError extends boolean = false>(
     parameters?: {

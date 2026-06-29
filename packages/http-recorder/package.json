@@ -1,17 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "@clawc/http-recorder",
   "description": "Record and replay Effect HTTP client traffic with deterministic cassettes",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BlusceLabs/opencode.git",
+    "url": "git+https://github.com/BlusceLabs/clawc.git",
     "directory": "packages/http-recorder"
   },
-  "homepage": "https://github.com/BlusceLabs/opencode/tree/dev/packages/http-recorder",
-  "bugs": "https://github.com/BlusceLabs/opencode/issues",
+  "homepage": "https://github.com/BlusceLabs/clawc/tree/dev/packages/http-recorder",
+  "bugs": "https://github.com/BlusceLabs/clawc/issues",
   "keywords": [
     "effect",
     "http",

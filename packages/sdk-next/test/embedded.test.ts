@@ -6,17 +6,17 @@ import { Flag } from "@clawc/core/flag/flag"
 import { Effect, Option, Schema, Stream } from "effect"
 
 test("embedded client uses the real router and handlers", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "opencode-embedded-"))
-  const database = Flag.OPENCODE_DB
-  Flag.OPENCODE_DB = join(directory, "opencode.sqlite")
+  const directory = await mkdtemp(join(tmpdir(), "clawc-embedded-"))
+  const database = Flag.CLAWC_DB
+  Flag.CLAWC_DB = join(directory, "clawc.sqlite")
   const { AbsolutePath, Agent, Location, Model, OpenCode, Prompt, Provider, Session, Tool } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
   const model = Model.Ref.make({ id: Model.ID.make("embedded"), providerID: Provider.ID.make("test") })
 
   try {
     const program = Effect.gen(function* () {
-      const opencode = yield* OpenCode.create()
-      yield* opencode.tools.register({
+      const clawc = yield* OpenCode.create()
+      yield* clawc.tools.register({
         embedded_tool: Tool.make({
           description: "Embedded test tool",
           input: Schema.Struct({}),
@@ -25,42 +25,42 @@ test("embedded client uses the real router and handlers", async () => {
         }),
       })
 
-      const created = yield* opencode.sessions.create({
+      const created = yield* clawc.sessions.create({
         id: sessionID,
         agent: Agent.ID.make("build"),
         location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
       })
-      yield* opencode.sessions.switchModel({ sessionID, model })
-      const selected = yield* opencode.sessions.get({ sessionID })
-      const page = yield* opencode.sessions.list({ directory: AbsolutePath.make(directory) })
-      const admitted = yield* opencode.sessions.prompt({
+      yield* clawc.sessions.switchModel({ sessionID, model })
+      const selected = yield* clawc.sessions.get({ sessionID })
+      const page = yield* clawc.sessions.list({ directory: AbsolutePath.make(directory) })
+      const admitted = yield* clawc.sessions.prompt({
         sessionID,
         prompt: Prompt.make({ text: "Do not run" }),
         resume: false,
       })
-      const context = yield* opencode.sessions.context({ sessionID })
-      const event = yield* opencode.sessions
+      const context = yield* clawc.sessions.context({ sessionID })
+      const event = yield* clawc.sessions
         .events({ sessionID })
         .pipe(Stream.take(1), Stream.runHead, Effect.map(Option.getOrUndefined))
       const modelMessage = Option.fromNullishOr(context.find((message) => message.type === "model-switched")).pipe(
         Option.getOrThrow,
       )
-      const message = yield* opencode.sessions.message({ sessionID, messageID: modelMessage.id })
-      yield* opencode.sessions.interrupt({ sessionID })
-      const other = yield* opencode.sessions.create({
+      const message = yield* clawc.sessions.message({ sessionID, messageID: modelMessage.id })
+      yield* clawc.sessions.interrupt({ sessionID })
+      const other = yield* clawc.sessions.create({
         location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
       })
       const missingSessionID = Session.ID.make(`ses_missing_${crypto.randomUUID()}`)
       const missing = yield* Effect.all(
         [
-          opencode.sessions.events({ sessionID: missingSessionID }).pipe(Stream.runHead, Effect.flip),
-          opencode.sessions.interrupt({ sessionID: missingSessionID }).pipe(Effect.flip),
-          opencode.sessions.message({ sessionID: missingSessionID, messageID: modelMessage.id }).pipe(Effect.flip),
+          clawc.sessions.events({ sessionID: missingSessionID }).pipe(Stream.runHead, Effect.flip),
+          clawc.sessions.interrupt({ sessionID: missingSessionID }).pipe(Effect.flip),
+          clawc.sessions.message({ sessionID: missingSessionID, messageID: modelMessage.id }).pipe(Effect.flip),
         ],
         { concurrency: "unbounded" },
       )
       const missingMessage = yield* Effect.flip(
-        opencode.sessions.message({
+        clawc.sessions.message({
           sessionID: other.id,
           messageID: modelMessage.id,
         }),
@@ -83,23 +83,23 @@ test("embedded client uses the real router and handlers", async () => {
     })
     await Effect.runPromise(Effect.scoped(program))
   } finally {
-    Flag.OPENCODE_DB = database
+    Flag.CLAWC_DB = database
     await rm(directory, { recursive: true, force: true })
   }
 })
 
 test("embedded client is available as a Layer service", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "opencode-embedded-layer-"))
-  const database = Flag.OPENCODE_DB
-  Flag.OPENCODE_DB = join(directory, "opencode.sqlite")
+  const directory = await mkdtemp(join(tmpdir(), "clawc-embedded-layer-"))
+  const database = Flag.CLAWC_DB
+  Flag.CLAWC_DB = join(directory, "clawc.sqlite")
   const { AbsolutePath, Location, OpenCode, Session } = await import("../src")
   const sessionID = Session.ID.make(`ses_embedded_${crypto.randomUUID()}`)
 
   try {
     const created = await Effect.runPromise(
       Effect.gen(function* () {
-        const opencode = yield* OpenCode.Service
-        return yield* opencode.sessions.create({
+        const clawc = yield* OpenCode.Service
+        return yield* clawc.sessions.create({
           id: sessionID,
           location: Location.Ref.make({ directory: AbsolutePath.make(directory) }),
         })
@@ -108,7 +108,7 @@ test("embedded client is available as a Layer service", async () => {
 
     expect(created.id).toBe(sessionID)
   } finally {
-    Flag.OPENCODE_DB = database
+    Flag.CLAWC_DB = database
     await rm(directory, { recursive: true, force: true })
   }
 })

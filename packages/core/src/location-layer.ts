@@ -49,7 +49,7 @@ import { SystemContextBuiltIns } from "./system-context/builtins"
 import { FetchHttpClient } from "effect/unstable/http"
 import { Snapshot } from "./snapshot"
 
-export class LocationServiceMap extends LayerMap.Service<LocationServiceMap>()("@opencode/example/LocationServiceMap", {
+export class LocationServiceMap extends LayerMap.Service<LocationServiceMap>()("@clawc/example/LocationServiceMap", {
   lookup: (ref: Location.Ref) => {
     const boot = Layer.effectDiscard(
       Effect.logInfo("booting location services", { directory: ref.directory, workspaceID: ref.workspaceID }),

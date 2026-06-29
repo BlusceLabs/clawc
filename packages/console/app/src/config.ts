@@ -3,11 +3,11 @@
  */
 export const config = {
   // Base URL
-  baseUrl: "https://opencode.ai",
+  baseUrl: "https://clawc.ai",
 
   // GitHub
   github: {
-    repoUrl: "https://github.com/BlusceLabs/opencode",
+    repoUrl: "https://github.com/BlusceLabs/clawc",
     starsFormatted: {
       compact: "160K",
       full: "160,000",
@@ -16,8 +16,8 @@ export const config = {
 
   // Social links
   social: {
-    twitter: "https://x.com/opencode",
-    discord: "https://discord.gg/opencode",
+    twitter: "https://x.com/clawc",
+    discord: "https://discord.gg/clawc",
   },
 
   // Static stats (used on landing page)

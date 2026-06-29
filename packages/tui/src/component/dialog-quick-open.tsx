@@ -6,7 +6,7 @@ import { useSync } from "../context/sync"
 import { useLocation } from "../context/location"
 import { useProject } from "../context/project"
 import { useTuiPaths } from "../context/runtime"
-import type { FileSystemEntry } from "@opencode-ai/sdk/v2"
+import type { FileSystemEntry } from "@clawc/sdk/v2"
 import path from "path"
 
 export type DialogQuickOpenProps = {

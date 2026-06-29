@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "@clawc/core",
   "type": "module",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "typecheck": "tsgo --noEmit"
   },
   "bin": {
-    "opencode": "./bin/opencode"
+    "clawc": "./bin/clawc"
   },
   "exports": {
     "./session/runner": "./src/session/runner/index.ts",

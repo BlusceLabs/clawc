@@ -1,11 +1,11 @@
 {
-  "name": "@opencode-ai/ui",
-  "version": "0.0.3",
+  "name": "@clawc/ui",
+  "version": "0.0.4",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BlusceLabs/opencode.git",
+    "url": "git+https://github.com/BlusceLabs/clawc.git",
     "directory": "packages/ui"
   },
   "publishConfig": {

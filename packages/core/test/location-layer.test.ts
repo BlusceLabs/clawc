@@ -93,7 +93,7 @@ describe("LocationServiceMap", () => {
           })
           yield* Effect.promise(() =>
             fs.writeFile(
-              path.join(blocked.path, "opencode.json"),
+              path.join(blocked.path, "clawc.json"),
               JSON.stringify({
                 experimental: { policies: [{ effect: "deny", action: "provider.use", resource: "test" }] },
               }),
@@ -163,7 +163,7 @@ describe("LocationServiceMap", () => {
           const location = Location.Ref.make({ directory: AbsolutePath.make(dir.path) })
           yield* Effect.promise(() =>
             fs.writeFile(
-              path.join(dir.path, "opencode.json"),
+              path.join(dir.path, "clawc.json"),
               JSON.stringify({
                 providers: {
                   unavailable: {

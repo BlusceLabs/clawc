@@ -87,7 +87,7 @@ further into the dark brown/black background.
 ### Files edited (TUI default)
 
 - `packages/tui/src/context/theme.tsx` — 6 theme-default fallback literals
-  `"opencode"` -> `"varth"` (initial store, kv fallback, draft fallback,
+  `"clawc"` -> `"varth"` (initial store, kv fallback, draft fallback,
   catch fallback, 2x system-theme fallback).
 
 ### Files edited (desktop default — hybrid approach)
@@ -121,7 +121,7 @@ Edits:
 
 - `oc-2.json` theme file (still selectable).
 - Legacy `oc-1` -> `oc-2` normalize migration.
-- TUI `provider.id === "opencode"` provider-identity checks.
+- TUI `provider.id === "clawc"` provider-identity checks.
 
 ## Verification
 
@@ -134,7 +134,7 @@ Edits:
 ## Out of scope
 
 - Renaming the project/package scope (separate parked task; see
-  `.kimchi/docs/rename-opencode-to-varth-notes.md`).
+  `.kimchi/docs/rename-clawc-to-varth-notes.md`).
 - Touching any other theme file.
 - Changing the `oc-2` legacy migration behavior.
 - Full approach B (regenerating `theme.css` `:root` block with varth vars) —

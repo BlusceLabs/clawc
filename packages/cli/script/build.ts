@@ -87,11 +87,11 @@ for (const item of targets) {
       windows: {},
     },
     define: {
-      OPENCODE_VERSION: `'${Script.version}'`,
-      OPENCODE_CLI_NAME: `'${binary}'`,
-      OPENCODE_MODELS_DEV: modelsData,
-      OPENCODE_CHANNEL: `'${Script.channel}'`,
-      OPENCODE_LIBC: item.os === "linux" ? `'${item.abi ?? "glibc"}'` : "undefined",
+      CLAWC_VERSION: `'${Script.version}'`,
+      CLAWC_CLI_NAME: `'${binary}'`,
+      CLAWC_MODELS_DEV: modelsData,
+      CLAWC_CHANNEL: `'${Script.channel}'`,
+      CLAWC_LIBC: item.os === "linux" ? `'${item.abi ?? "glibc"}'` : "undefined",
       // FFF_LIBC selects the fff native lib variant: "musl" or "gnu".
       FFF_LIBC: item.os === "linux" ? `'${item.abi ?? "gnu"}'` : "undefined",
       OTUI_TREE_SITTER_WORKER_PATH:
@@ -114,7 +114,7 @@ for (const item of targets) {
         name: `@clawc/${name}`,
         version: Script.version,
         license: "MIT",
-        repository: { type: "git", url: "git+https://github.com/BlusceLabs/opencode.git" },
+        repository: { type: "git", url: "git+https://github.com/BlusceLabs/clawc.git" },
         os: [item.os],
         cpu: [item.arch],
       },

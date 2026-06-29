@@ -41,7 +41,7 @@ test("animates todo lifecycle without replaying it across session tabs", async (
     provider: {
       all: [
         {
-          id: "opencode",
+          id: "clawc",
           name: "OpenCode",
           models: {
             "claude-opus-4-6": {
@@ -52,8 +52,8 @@ test("animates todo lifecycle without replaying it across session tabs", async (
           },
         },
       ],
-      connected: ["opencode"],
-      default: { providerID: "opencode", modelID: "claude-opus-4-6" },
+      connected: ["clawc"],
+      default: { providerID: "clawc", modelID: "claude-opus-4-6" },
     },
     sessions: [session(sourceID, sourceTitle, 1700000000000), session(otherID, otherTitle, 1700000001000)],
     pageMessages: () => ({ items: [] }),
@@ -138,14 +138,14 @@ async function configurePage(page: Page) {
     ({ directory, dirBase64, server, sessionIDs }) => {
       localStorage.setItem("settings.v3", JSON.stringify({ general: { newLayoutDesigns: true } }))
       localStorage.setItem(
-        "opencode.global.dat:server",
+        "clawc.global.dat:server",
         JSON.stringify({
           projects: { local: [{ worktree: directory, expanded: true }] },
           lastProject: { local: directory },
         }),
       )
       localStorage.setItem(
-        "opencode.global.dat:tabs",
+        "clawc.global.dat:tabs",
         JSON.stringify(sessionIDs.map((sessionId) => ({ type: "session", server, dirBase64, sessionId }))),
       )
     },

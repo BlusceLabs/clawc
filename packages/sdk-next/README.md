@@ -7,8 +7,8 @@ The SDK executes Server's assembled HTTP router in memory. It opens no listener 
 ```ts
 import { OpenCode } from "@clawc/sdk-next"
 
-const opencode = yield * OpenCode.create()
-const session = yield * opencode.sessions.get({ sessionID })
+const clawc = yield * OpenCode.create()
+const session = yield * clawc.sessions.get({ sessionID })
 ```
 
 It also exports `Tool` and exposes local-only `tools.register(...)`, replacing the former `@clawc/core/public` facade. Registration uses Core's host-level `ApplicationTools` service shared by the host's Locations; each Location retains its own `ToolRegistry` for overlay, lookup, and settlement. Closing the owning Effect Scope releases router resources, location services, fibers, and scoped tool registrations.
@@ -19,8 +19,8 @@ The same constructor is available as a service Layer:
 
 ```ts
 const program = Effect.gen(function* () {
-  const opencode = yield* OpenCode.Service
-  return yield* opencode.sessions.get({ sessionID })
+  const clawc = yield* OpenCode.Service
+  return yield* clawc.sessions.get({ sessionID })
 })
 
 yield * program.pipe(Effect.provide(OpenCode.layer))

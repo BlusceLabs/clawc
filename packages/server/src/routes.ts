@@ -14,13 +14,13 @@ import { PtyEnvironment } from "./pty-environment"
 export function createRoutes(password?: string) {
   return makeRoutes(
     password
-      ? ServerAuth.Config.layer({ username: "opencode", password: Option.some(password) })
+      ? ServerAuth.Config.layer({ username: "clawc", password: Option.some(password) })
       : ServerAuth.Config.defaultLayer,
   )
 }
 
 export function createEmbeddedRoutes() {
-  return makeRoutes(ServerAuth.Config.layer({ username: "opencode", password: Option.none() }))
+  return makeRoutes(ServerAuth.Config.layer({ username: "clawc", password: Option.none() }))
 }
 
 function makeRoutes<AuthError, AuthServices>(auth: Layer.Layer<ServerAuth.Config, AuthError, AuthServices>) {

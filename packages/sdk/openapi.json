@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "opencode",
+    "title": "clawc",
     "version": "1.0.0",
-    "description": "opencode api"
+    "description": "clawc api"
   },
   "paths": {
     "/auth/{providerID}": {
@@ -548,8 +548,8 @@
             }
           }
         },
-        "description": "Upgrade opencode to the specified version or latest if not specified.",
-        "summary": "Upgrade opencode",
+        "description": "Upgrade clawc to the specified version or latest if not specified.",
+        "summary": "Upgrade clawc",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9779,7 +9779,7 @@
     },
     "/api/health": {
       "get": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["clawc HttpApi"],
         "operationId": "v2.health.get",
         "parameters": [],
         "security": [],
@@ -9835,7 +9835,7 @@
     },
     "/api/location": {
       "get": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["clawc HttpApi"],
         "operationId": "v2.location.get",
         "parameters": [
           {
@@ -9903,7 +9903,7 @@
     },
     "/api/agent": {
       "get": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["clawc HttpApi"],
         "operationId": "v2.agent.list",
         "parameters": [
           {
@@ -12513,7 +12513,7 @@
     },
     "/api/credential/{credentialID}": {
       "patch": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["clawc HttpApi"],
         "operationId": "v2.credential.update",
         "parameters": [
           {
@@ -12597,7 +12597,7 @@
         ]
       },
       "delete": {
-        "tags": ["opencode HttpApi"],
+        "tags": ["clawc HttpApi"],
         "operationId": "v2.credential.remove",
         "parameters": [
           {
@@ -20495,7 +20495,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Server configuration for opencode serve and web commands"
+        "description": "Server configuration for clawc serve and web commands"
       },
       "PermissionActionConfig": {
         "type": "string",
@@ -39228,15 +39228,15 @@
       "description": "Experimental HttpApi workspace routes."
     },
     {
-      "name": "opencode HttpApi",
+      "name": "clawc HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
-      "name": "opencode HttpApi",
+      "name": "clawc HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
-      "name": "opencode HttpApi",
+      "name": "clawc HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {
@@ -39260,7 +39260,7 @@
       "description": "Integration discovery and authentication routes."
     },
     {
-      "name": "opencode HttpApi",
+      "name": "clawc HttpApi",
       "description": "Experimental HttpApi surface for selected instance routes."
     },
     {

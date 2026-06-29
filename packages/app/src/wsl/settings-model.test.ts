@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { enterWslOpencodeStep, wslOpencodeAction, wslRuntimeRetryable } from "./settings-model"
+import { enterWslOpencodeStep, wslClawcAction, wslRuntimeRetryable } from "./settings-model"
 
 describe("WSL server settings presentation", () => {
   test("retries only settled unsuccessful runtimes", () => {
@@ -12,9 +12,9 @@ describe("WSL server settings presentation", () => {
   })
 
   test("offers install and update only when OpenCode needs attention", () => {
-    expect(wslOpencodeAction(undefined)).toBeUndefined()
+    expect(wslClawcAction(undefined)).toBeUndefined()
     expect(
-      wslOpencodeAction({
+      wslClawcAction({
         distro: "Debian",
         resolvedPath: null,
         version: null,
@@ -24,9 +24,9 @@ describe("WSL server settings presentation", () => {
       }),
     ).toBe("Install OpenCode")
     expect(
-      wslOpencodeAction({
+      wslClawcAction({
         distro: "Debian",
-        resolvedPath: "/usr/local/bin/opencode",
+        resolvedPath: "/usr/local/bin/clawc",
         version: "1.2.2",
         expectedVersion: "1.2.3",
         matchesDesktop: false,
@@ -34,9 +34,9 @@ describe("WSL server settings presentation", () => {
       }),
     ).toBe("Update OpenCode")
     expect(
-      wslOpencodeAction({
+      wslClawcAction({
         distro: "Debian",
-        resolvedPath: "/usr/local/bin/opencode",
+        resolvedPath: "/usr/local/bin/clawc",
         version: "1.2.3",
         expectedVersion: "1.2.3",
         matchesDesktop: true,
@@ -52,6 +52,6 @@ describe("WSL server settings presentation", () => {
       async (distro) => calls.push(distro),
       (step) => calls.push(step),
     )
-    expect(calls).toEqual(["Debian", "opencode"])
+    expect(calls).toEqual(["Debian", "clawc"])
   })
 })

@@ -263,7 +263,7 @@ export async function installWslOpencode(version: string, distro: string, opts?:
   return runInteractiveCommand(
     resolveSystem32Command("wsl.exe"),
     wslArgs(
-      ["bash", "-lc", `curl -fsSL https://raw.githubusercontent.com/BlusceLabs/opencode/main/install | bash -s -- --version ${shellEscape(version)}`],
+      ["bash", "-lc", `curl -fsSL https://raw.githubusercontent.com/BlusceLabs/clawc/main/install | bash -s -- --version ${shellEscape(version)}`],
       distro,
     ),
     withTimeout(opts, DEFAULT_WSL_INSTALL_TIMEOUT_MS),
@@ -306,7 +306,7 @@ export async function resolveWslOpencode(distro: string, opts?: RunWslOptions) {
   return firstLine(
     (
       await runWslSh(
-        'if [ -x "$HOME/.opencode/bin/opencode" ]; then printf "%s\\n" "$HOME/.opencode/bin/opencode"; fi',
+        'if [ -x "$HOME/.clawc/bin/clawc" ]; then printf "%s\\n" "$HOME/.clawc/bin/clawc"; fi',
         distro,
         opts,
       )

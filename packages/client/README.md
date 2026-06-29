@@ -18,7 +18,7 @@ Effect consumers construct canonical decoded inputs:
 ```ts
 import { AbsolutePath, Location, OpenCode, Prompt } from "@clawc/client/effect"
 
-const client = yield * OpenCode.make({ baseUrl: "https://opencode.example" })
+const client = yield * OpenCode.make({ baseUrl: "https://clawc.example" })
 yield *
   client.sessions.create({
     location: Location.Ref.make({ directory: AbsolutePath.make("/workspace") }),

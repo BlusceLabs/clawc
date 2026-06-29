@@ -11,7 +11,7 @@ import { LocaleLinks } from "~/component/locale-links"
 import { config } from "~/config"
 import { useI18n } from "~/context/i18n"
 import { useLanguage } from "~/context/language"
-import desktopAppIcon from "../../asset/lander/opencode-desktop-icon.png"
+import desktopAppIcon from "../../asset/lander/clawc-desktop-icon.png"
 import type { DownloadPlatform } from "./types"
 
 type OS = "macOS" | "Windows" | "Linux" | null
@@ -118,10 +118,10 @@ export default function Download() {
             <div data-component="section-content">
               <button
                 data-component="cli-row"
-                onClick={handleCopyClick("curl -fsSL https://raw.githubusercontent.com/BlusceLabs/opencode/main/install | bash")}
+                onClick={handleCopyClick("curl -fsSL https://raw.githubusercontent.com/BlusceLabs/clawc/main/install | bash")}
               >
                 <code>
-                  curl -fsSL https://<strong>raw.githubusercontent.com/BlusceLabs/opencode/main/install</strong> | bash
+                  curl -fsSL https://<strong>raw.githubusercontent.com/BlusceLabs/clawc/main/install</strong> | bash
                 </code>
                 <CopyStatus />
               </button>
@@ -137,15 +137,15 @@ export default function Download() {
                 </code>
                 <CopyStatus />
               </button>
-              <button data-component="cli-row" onClick={handleCopyClick("brew install BlusceLabs/tap/opencode")}>
+              <button data-component="cli-row" onClick={handleCopyClick("brew install BlusceLabs/tap/clawc")}>
                 <code>
-                  brew install <strong>BlusceLabs/tap/opencode</strong>
+                  brew install <strong>BlusceLabs/tap/clawc</strong>
                 </code>
                 <CopyStatus />
               </button>
-              <button data-component="cli-row" onClick={handleCopyClick("paru -S opencode")}>
+              <button data-component="cli-row" onClick={handleCopyClick("paru -S clawc")}>
                 <code>
-                  paru -S <strong>opencode</strong>
+                  paru -S <strong>clawc</strong>
                 </code>
                 <CopyStatus />
               </button>
@@ -157,9 +157,9 @@ export default function Download() {
               <span>[2]</span> {i18n.t("download.section.desktop")}
             </div>
             <div data-component="section-content">
-              <button data-component="cli-row" onClick={handleCopyClick("brew install --cask opencode-desktop")}>
+              <button data-component="cli-row" onClick={handleCopyClick("brew install --cask clawc-desktop")}>
                 <code>
-                  brew install --cask <strong>opencode-desktop</strong>
+                  brew install --cask <strong>clawc-desktop</strong>
                 </code>
                 <CopyStatus />
               </button>

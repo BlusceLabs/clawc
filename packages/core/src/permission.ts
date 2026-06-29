@@ -97,7 +97,7 @@ export interface Interface {
   readonly list: () => EffectRuntime.Effect<ReadonlyArray<Request>>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/v2/Permission") {}
+export class Service extends Context.Service<Service, Interface>()("@clawc/v2/Permission") {}
 
 interface Pending {
   readonly request: Request

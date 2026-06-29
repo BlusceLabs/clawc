@@ -49,7 +49,7 @@ if (import.meta.env.VITE_SENTRY_DSN) {
         (i) =>
           i.name !== "Breadcrumbs" &&
           !(
-            import.meta.env.OPENCODE_CHANNEL === "prod" &&
+            import.meta.env.CLAWC_CHANNEL === "prod" &&
             (i.name === "GlobalHandlers" || i.name === "BrowserApiErrors")
           ),
       )
@@ -62,13 +62,13 @@ void initI18n()
 const [updaterState, setUpdaterState] = createSignal<UpdaterState>({ status: "disabled" })
 void window.api.updater.subscribe(setUpdaterState)
 
-const deepLinkEvent = "opencode:deep-link"
+const deepLinkEvent = "clawc:deep-link"
 
 const emitDeepLinks = (urls: string[]) => {
   if (urls.length === 0) return
-  window.__OPENCODE__ ??= {}
-  const pending = window.__OPENCODE__.deepLinks ?? []
-  window.__OPENCODE__.deepLinks = [...pending, ...urls]
+  window.__CLAWC__ ??= {}
+  const pending = window.__CLAWC__.deepLinks ?? []
+  window.__CLAWC__.deepLinks = [...pending, ...urls]
   window.dispatchEvent(new CustomEvent(deepLinkEvent, { detail: { urls } }))
 }
 
@@ -216,7 +216,7 @@ const createPlatform = (): Platform => {
 
       const notification = new Notification(title, {
         body: description ?? "",
-        icon: "https://opencode.ai/favicon-96x96-v3.png",
+        icon: "https://clawc.ai/favicon-96x96-v3.png",
       })
       notification.onclick = () => {
         void window.api.showWindow()
@@ -285,7 +285,7 @@ listenForDeepLinks()
 render(() => {
   const platform = createPlatform()
   const loadLocale = async () => {
-    const current = await platform.storage?.("opencode.global.dat").getItem("language")
+    const current = await platform.storage?.("clawc.global.dat").getItem("language")
     const legacy = current ? undefined : await platform.storage?.().getItem("language.v1")
     const raw = current ?? legacy
     if (!raw) return

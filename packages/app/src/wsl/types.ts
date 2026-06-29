@@ -23,7 +23,7 @@ export type WslDistroProbe = {
   error: string | null
 }
 
-export type WslOpencodeCheck = {
+export type WslClawcCheck = {
   distro: string
   resolvedPath: string | null
   version: string | null
@@ -54,15 +54,15 @@ export type WslJob =
   | { kind: "install-wsl"; startedAt: number }
   | { kind: "install-distro"; distro: string; startedAt: number }
   | { kind: "probe-distro"; distro: string; startedAt: number }
-  | { kind: "probe-opencode"; distro: string; startedAt: number }
-  | { kind: "install-opencode"; distro: string; startedAt: number }
+  | { kind: "probe-clawc"; distro: string; startedAt: number }
+  | { kind: "install-clawc"; distro: string; startedAt: number }
 
 export type WslServersState = {
   runtime: WslRuntimeCheck | null
   installed: WslInstalledDistro[]
   online: WslOnlineDistro[]
   distroProbes: Record<string, WslDistroProbe>
-  opencodeChecks: Record<string, WslOpencodeCheck>
+  clawcChecks: Record<string, WslClawcCheck>
   pendingRestart: boolean
   servers: WslServerItem[]
   job: WslJob | null

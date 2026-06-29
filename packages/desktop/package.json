@@ -1,13 +1,13 @@
 {
   "name": "@clawc/desktop",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://opencode.ai",
+  "homepage": "https://clawc.ai",
   "author": {
     "name": "OpenCode",
-    "email": "hello@opencode.ai"
+    "email": "hello@clawc.ai"
   },
   "scripts": {
     "typecheck": "tsgo -b",

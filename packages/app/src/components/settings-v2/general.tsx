@@ -336,7 +336,7 @@ export const SettingsGeneralV2: Component = () => {
           </div>
         </SettingsRowV2>
 
-        <Show when={mobile() && import.meta.env.VITE_OPENCODE_CHANNEL !== "prod"}>
+        <Show when={mobile() && import.meta.env.VITE_CLAWC_CHANNEL !== "prod"}>
           <SettingsRowV2
             title={language.t("settings.general.row.mobileTitlebarBottom.title")}
             description={language.t("settings.general.row.mobileTitlebarBottom.description")}
@@ -441,7 +441,7 @@ export const SettingsGeneralV2: Component = () => {
           description={
             <>
               {language.t("settings.general.row.theme.description")}{" "}
-              <Link class="settings-v2-link" href="https://opencode.ai/docs/themes/">
+              <Link class="settings-v2-link" href="https://clawc.ai/docs/themes/">
                 {language.t("common.learnMore")}
               </Link>
             </>

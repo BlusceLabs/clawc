@@ -17,7 +17,7 @@ export interface Interface {
   readonly grep: (input: FileSystem.GrepInput) => Effect.Effect<readonly FileSystem.Match[]>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/v2/FileSystem/Search") {}
+export class Service extends Context.Service<Service, Interface>()("@clawc/v2/FileSystem/Search") {}
 
 export const ripgrepLayer = Layer.effect(
   Service,
@@ -230,5 +230,5 @@ export const fffLayer = Layer.effect(
 )
 
 export const locationLayer = Layer.unwrap(
-  Effect.sync(() => (Flag.OPENCODE_DISABLE_FFF || !Fff.available() ? ripgrepLayer : fffLayer)),
+  Effect.sync(() => (Flag.CLAWC_DISABLE_FFF || !Fff.available() ? ripgrepLayer : fffLayer)),
 )

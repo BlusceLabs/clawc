@@ -5,74 +5,74 @@ export function truthy(key: string) {
   return value === "true" || value === "1"
 }
 
-const copy = process.env["OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT"]
-const fff = process.env["OPENCODE_DISABLE_FFF"]
+const copy = process.env["CLAWC_EXPERIMENTAL_DISABLE_COPY_ON_SELECT"]
+const fff = process.env["CLAWC_DISABLE_FFF"]
 
 function enabledByExperimental(key: string) {
-  return process.env[key] === undefined ? truthy("OPENCODE_EXPERIMENTAL") : truthy(key)
+  return process.env[key] === undefined ? truthy("CLAWC_EXPERIMENTAL") : truthy(key)
 }
 
 export const Flag = {
   OTEL_EXPORTER_OTLP_ENDPOINT: process.env["OTEL_EXPORTER_OTLP_ENDPOINT"],
   OTEL_EXPORTER_OTLP_HEADERS: process.env["OTEL_EXPORTER_OTLP_HEADERS"],
 
-  OPENCODE_AUTO_HEAP_SNAPSHOT: truthy("OPENCODE_AUTO_HEAP_SNAPSHOT"),
-  OPENCODE_GIT_BASH_PATH: process.env["OPENCODE_GIT_BASH_PATH"],
-  OPENCODE_CONFIG: process.env["OPENCODE_CONFIG"],
-  OPENCODE_CONFIG_CONTENT: process.env["OPENCODE_CONFIG_CONTENT"],
-  OPENCODE_DISABLE_AUTOUPDATE: truthy("OPENCODE_DISABLE_AUTOUPDATE"),
-  OPENCODE_ALWAYS_NOTIFY_UPDATE: truthy("OPENCODE_ALWAYS_NOTIFY_UPDATE"),
-  OPENCODE_DISABLE_PRUNE: truthy("OPENCODE_DISABLE_PRUNE"),
-  OPENCODE_DISABLE_TERMINAL_TITLE: truthy("OPENCODE_DISABLE_TERMINAL_TITLE"),
-  OPENCODE_SHOW_TTFD: truthy("OPENCODE_SHOW_TTFD"),
-  OPENCODE_DISABLE_AUTOCOMPACT: truthy("OPENCODE_DISABLE_AUTOCOMPACT"),
-  OPENCODE_DISABLE_MODELS_FETCH: truthy("OPENCODE_DISABLE_MODELS_FETCH"),
-  OPENCODE_DISABLE_MOUSE: truthy("OPENCODE_DISABLE_MOUSE"),
-  OPENCODE_FAKE_VCS: process.env["OPENCODE_FAKE_VCS"],
-  OPENCODE_SERVER_PASSWORD: process.env["OPENCODE_SERVER_PASSWORD"],
-  OPENCODE_SERVER_USERNAME: process.env["OPENCODE_SERVER_USERNAME"],
-  OPENCODE_DISABLE_FFF: fff === undefined ? process.platform === "win32" : truthy("OPENCODE_DISABLE_FFF"),
+  CLAWC_AUTO_HEAP_SNAPSHOT: truthy("CLAWC_AUTO_HEAP_SNAPSHOT"),
+  CLAWC_GIT_BASH_PATH: process.env["CLAWC_GIT_BASH_PATH"],
+  CLAWC_CONFIG: process.env["CLAWC_CONFIG"],
+  CLAWC_CONFIG_CONTENT: process.env["CLAWC_CONFIG_CONTENT"],
+  CLAWC_DISABLE_AUTOUPDATE: truthy("CLAWC_DISABLE_AUTOUPDATE"),
+  CLAWC_ALWAYS_NOTIFY_UPDATE: truthy("CLAWC_ALWAYS_NOTIFY_UPDATE"),
+  CLAWC_DISABLE_PRUNE: truthy("CLAWC_DISABLE_PRUNE"),
+  CLAWC_DISABLE_TERMINAL_TITLE: truthy("CLAWC_DISABLE_TERMINAL_TITLE"),
+  CLAWC_SHOW_TTFD: truthy("CLAWC_SHOW_TTFD"),
+  CLAWC_DISABLE_AUTOCOMPACT: truthy("CLAWC_DISABLE_AUTOCOMPACT"),
+  CLAWC_DISABLE_MODELS_FETCH: truthy("CLAWC_DISABLE_MODELS_FETCH"),
+  CLAWC_DISABLE_MOUSE: truthy("CLAWC_DISABLE_MOUSE"),
+  CLAWC_FAKE_VCS: process.env["CLAWC_FAKE_VCS"],
+  CLAWC_SERVER_PASSWORD: process.env["CLAWC_SERVER_PASSWORD"],
+  CLAWC_SERVER_USERNAME: process.env["CLAWC_SERVER_USERNAME"],
+  CLAWC_DISABLE_FFF: fff === undefined ? process.platform === "win32" : truthy("CLAWC_DISABLE_FFF"),
 
   // Experimental
-  OPENCODE_EXPERIMENTAL_FILEWATCHER: Config.boolean("OPENCODE_EXPERIMENTAL_FILEWATCHER").pipe(
+  CLAWC_EXPERIMENTAL_FILEWATCHER: Config.boolean("CLAWC_EXPERIMENTAL_FILEWATCHER").pipe(
     Config.withDefault(false),
   ),
-  OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER: Config.boolean("OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER").pipe(
+  CLAWC_EXPERIMENTAL_DISABLE_FILEWATCHER: Config.boolean("CLAWC_EXPERIMENTAL_DISABLE_FILEWATCHER").pipe(
     Config.withDefault(false),
   ),
-  OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT:
-    copy === undefined ? process.platform === "win32" : truthy("OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT"),
-  OPENCODE_MODELS_URL: process.env["OPENCODE_MODELS_URL"],
-  OPENCODE_MODELS_PATH: process.env["OPENCODE_MODELS_PATH"],
-  OPENCODE_DB: process.env["OPENCODE_DB"],
+  CLAWC_EXPERIMENTAL_DISABLE_COPY_ON_SELECT:
+    copy === undefined ? process.platform === "win32" : truthy("CLAWC_EXPERIMENTAL_DISABLE_COPY_ON_SELECT"),
+  CLAWC_MODELS_URL: process.env["CLAWC_MODELS_URL"],
+  CLAWC_MODELS_PATH: process.env["CLAWC_MODELS_PATH"],
+  CLAWC_DB: process.env["CLAWC_DB"],
 
-  OPENCODE_WORKSPACE_ID: process.env["OPENCODE_WORKSPACE_ID"],
-  OPENCODE_EXPERIMENTAL_WORKSPACES: enabledByExperimental("OPENCODE_EXPERIMENTAL_WORKSPACES"),
+  CLAWC_WORKSPACE_ID: process.env["CLAWC_WORKSPACE_ID"],
+  CLAWC_EXPERIMENTAL_WORKSPACES: enabledByExperimental("CLAWC_EXPERIMENTAL_WORKSPACES"),
 
   // Evaluated at access time (not module load) because tests, the CLI, and
   // external tooling set these env vars at runtime.
-  get OPENCODE_DISABLE_PROJECT_CONFIG() {
-    return truthy("OPENCODE_DISABLE_PROJECT_CONFIG")
+  get CLAWC_DISABLE_PROJECT_CONFIG() {
+    return truthy("CLAWC_DISABLE_PROJECT_CONFIG")
   },
-  get OPENCODE_EXPERIMENTAL_REFERENCES() {
-    return enabledByExperimental("OPENCODE_EXPERIMENTAL_REFERENCES")
+  get CLAWC_EXPERIMENTAL_REFERENCES() {
+    return enabledByExperimental("CLAWC_EXPERIMENTAL_REFERENCES")
   },
-  get OPENCODE_TUI_CONFIG() {
-    return process.env["OPENCODE_TUI_CONFIG"]
+  get CLAWC_TUI_CONFIG() {
+    return process.env["CLAWC_TUI_CONFIG"]
   },
-  get OPENCODE_CONFIG_DIR() {
-    return process.env["OPENCODE_CONFIG_DIR"]
+  get CLAWC_CONFIG_DIR() {
+    return process.env["CLAWC_CONFIG_DIR"]
   },
-  get OPENCODE_PURE() {
-    return truthy("OPENCODE_PURE")
+  get CLAWC_PURE() {
+    return truthy("CLAWC_PURE")
   },
-  get OPENCODE_PERMISSION() {
-    return process.env["OPENCODE_PERMISSION"]
+  get CLAWC_PERMISSION() {
+    return process.env["CLAWC_PERMISSION"]
   },
-  get OPENCODE_PLUGIN_META_FILE() {
-    return process.env["OPENCODE_PLUGIN_META_FILE"]
+  get CLAWC_PLUGIN_META_FILE() {
+    return process.env["CLAWC_PLUGIN_META_FILE"]
   },
-  get OPENCODE_CLIENT() {
-    return process.env["OPENCODE_CLIENT"] ?? "cli"
+  get CLAWC_CLIENT() {
+    return process.env["CLAWC_CLIENT"] ?? "cli"
   },
 }

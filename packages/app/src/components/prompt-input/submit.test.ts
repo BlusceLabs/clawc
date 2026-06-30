@@ -85,7 +85,7 @@ beforeAll(async () => {
   }))
 
   mock.module("@clawc/sdk/v2/client", () => ({
-    createOpencodeClient: (input: { directory: string }) => {
+    createClawcClient: (input: { directory: string }) => {
       createdClients.push(input.directory)
       return clientFor(input.directory)
     },

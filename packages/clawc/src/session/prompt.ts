@@ -866,15 +866,17 @@ export const layer = Layer.effect(
                 const range = { start: url.searchParams.get("start"), end: url.searchParams.get("end") }
                 if (range.start != null) {
                   const filePathURI = part.url.split("?")[0]
-                  let start = parseInt(range.start)
-                  let end = range.end ? parseInt(range.end) : undefined
+                  let start = parseInt(range.start, 10)
+                  let end = range.end ? parseInt(range.end, 10) : undefined
+                  if (!Number.isFinite(start)) start = 1
+                  if (end !== undefined && !Number.isFinite(end)) end = undefined
                   if (start === end) {
                     const symbols = yield* lsp.documentSymbol(filePathURI).pipe(Effect.catch(() => Effect.succeed([])))
                     for (const symbol of symbols) {
                       let r: LSP.Range | undefined
                       if ("range" in symbol) r = symbol.range
                       else if ("location" in symbol) r = symbol.location.range
-                      if (r?.start?.line && r?.start?.line === start) {
+                      if (r?.start?.line != null && r?.start?.line === start) {
                         start = r.start.line
                         end = r?.end?.line ?? start
                         break

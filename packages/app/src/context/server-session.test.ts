@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { OpencodeClient, Session } from "@clawc/sdk/v2/client"
+import type { ClawcClient, Session } from "@clawc/sdk/v2/client"
 import { createServerSession } from "./server-session"
 
 const session = (id: string, parentID?: string): Session => ({
@@ -30,7 +30,7 @@ function setup(sessions: Record<string, Session>) {
       diff: async () => ({ data: [] }),
       todo: async () => ({ data: [] }),
     },
-  } as unknown as OpencodeClient
+  } as unknown as ClawcClient
   return { get, messages, store: createServerSession(client) }
 }
 

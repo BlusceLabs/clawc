@@ -78,8 +78,8 @@ export type WslServersPlatform = {
   installWsl(): Promise<void>
   installDistro(name: string): Promise<void>
   probeDistro(name: string): Promise<void>
-  probeOpencode(name: string): Promise<void>
-  installOpencode(name: string): Promise<void>
+  probeClawc(name: string): Promise<void>
+  installClawc(name: string): Promise<void>
   openTerminal(name: string): Promise<void>
   addServer(distro: string): Promise<WslServerConfig>
   removeServer(id: string): Promise<void>

@@ -711,8 +711,8 @@ export const layer: Layer.Layer<Service, never, FSUtil.Service | AppProcess.Serv
                   const [adds, dels, file] = line.split("\t")
                   if (!file) return []
                   const binary = adds === "-" && dels === "-"
-                  const additions = binary ? 0 : parseInt(adds)
-                  const deletions = binary ? 0 : parseInt(dels)
+                  const additions = binary ? 0 : parseInt(adds, 10)
+                  const deletions = binary ? 0 : parseInt(dels, 10)
                   return [
                     {
                       file,

@@ -36,13 +36,13 @@ export const collectOpenProjectDeepLinks = (urls: string[]) =>
 export const collectNewSessionDeepLinks = (urls: string[]) =>
   urls.map(parseNewSessionDeepLink).filter((link): link is { directory: string; prompt?: string } => !!link)
 
-type OpenCodeWindow = Window & {
+type ClawCWindow = Window & {
   __CLAWC__?: {
     deepLinks?: string[]
   }
 }
 
-export const drainPendingDeepLinks = (target: OpenCodeWindow) => {
+export const drainPendingDeepLinks = (target: ClawCWindow) => {
   const pending = target.__CLAWC__?.deepLinks ?? []
   if (pending.length === 0) return []
   if (target.__CLAWC__) target.__CLAWC__.deepLinks = []

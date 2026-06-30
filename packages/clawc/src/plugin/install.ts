@@ -399,12 +399,12 @@ async function patchOne(dir: string, target: Target, spec: string, force: boolea
   }
 
   const write = await dep.write(cfg, out.text).catch((error: unknown) => error)
-  if (write instanceof Error) {
+  if (write !== undefined) {
     return {
       ok: false,
       code: "patch_failed",
       kind: target.kind,
-      error: write,
+      error: write instanceof Error ? write : new Error(String(write)),
     }
   }
 

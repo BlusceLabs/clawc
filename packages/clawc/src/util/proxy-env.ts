@@ -60,8 +60,9 @@ function shouldProxy(hostname: string, port: number) {
     const proxyPort = parsed ? Number.parseInt(parsed[2]) : 0
     if (proxyPort && proxyPort !== port) return true
 
-    if (!/^[.*]/.test(proxyHostname)) return hostname !== proxyHostname
-    return !hostname.endsWith(proxyHostname.startsWith("*") ? proxyHostname.slice(1) : proxyHostname)
+    if (!/^[.*]/.test(proxyHostname)) return hostname !== proxyHostname && hostname !== "." + proxyHostname
+    const suffix = proxyHostname.startsWith(".") ? proxyHostname.slice(1) : proxyHostname.startsWith("*") ? proxyHostname.slice(1) : proxyHostname
+    return !hostname.endsWith(suffix) && hostname !== suffix
   })
 }
 

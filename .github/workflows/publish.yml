@@ -27,8 +27,40 @@ permissions:
   contents: write
 
 jobs:
+  version:
+    runs-on: ubuntu-latest
+    if: github.repository == 'BlusceLabs/clawc'
+    steps:
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup-bun
+
+      - name: Setup git committer
+        id: committer
+        uses: ./.github/actions/setup-git-committer
+        with:
+          clawc-app-id: ${{ vars.CLAWC_APP_ID }}
+          clawc-app-secret: ${{ secrets.CLAWC_APP_SECRET }}
+
+      - id: version
+        run: |
+          ./script/version.ts
+        env:
+          GH_TOKEN: ${{ steps.committer.outputs.token }}
+          CLAWC_BUMP: ${{ inputs.bump }}
+          CLAWC_VERSION: ${{ inputs.version }}
+          GH_REPO: ${{ github.repository }}
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      release: ${{ steps.version.outputs.release }}
+      tag: ${{ steps.version.outputs.tag }}
+      repo: ${{ steps.version.outputs.repo }}
+
   build-cli:
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    needs: version
+    runs-on: ubuntu-latest
     if: github.repository == 'BlusceLabs/clawc'
     steps:
       - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
@@ -51,7 +83,7 @@ jobs:
         env:
           CLAWC_VERSION: ${{ needs.version.outputs.version }}
           CLAWC_RELEASE: ${{ needs.version.outputs.release }}
-          GH_REPO: ${{ github.repository }}
+          GH_REPO: ${{ needs.version.outputs.repo }}
           GH_TOKEN: ${{ steps.committer.outputs.token }}
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -60,6 +92,33 @@ jobs:
           path: |
             packages/clawc/dist/clawc-darwin*
             packages/clawc/dist/clawc-linux*
+            packages/clawc/dist/clawc-windows*
 
-    outputs:
-      version: ${{ needs.version.outputs.version }}
+  publish:
+    needs:
+      - version
+      - build-cli
+    runs-on: ubuntu-latest
+    if: always() && !failure() && !cancelled() && needs.version.outputs.release != ''
+    steps:
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
+
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: clawc-cli
+          path: packages/clawc/dist
+
+      - name: Setup git committer
+        id: committer
+        uses: ./.github/actions/setup-git-committer
+        with:
+          clawc-app-id: ${{ vars.CLAWC_APP_ID }}
+          clawc-app-secret: ${{ secrets.CLAWC_APP_SECRET }}
+
+      - name: Upload release assets
+        run: |
+          gh release upload "v${{ needs.version.outputs.version }}" \
+            packages/clawc/dist/*.tar.gz packages/clawc/dist/*.zip \
+            --clobber --repo "${{ needs.version.outputs.repo }}"
+        env:
+          GH_TOKEN: ${{ steps.committer.outputs.token }}

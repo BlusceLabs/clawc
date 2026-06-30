@@ -1,4 +1,4 @@
-/** @jsxImportSource @clawctui/solid */
+/** @jsxImportSource @opentui/solid */
 import type { TuiPlugin, TuiPluginApi, TuiRouteCurrent } from "@clawc/plugin/tui"
 import type { SnapshotFileDiff, VcsFileDiff } from "@clawc/sdk/v2"
 import {
@@ -7,11 +7,11 @@ import {
   type BoxRenderable,
   type DiffRenderable,
   type ScrollBoxRenderable,
-} from "@clawctui/core"
+} from "@opentui/core"
 import { LANGUAGE_EXTENSIONS } from "../../util/filetype"
 import { useBindings, useCommandShortcut } from "../../keymap"
 import { useTheme } from "../../context/theme"
-import { useTerminalDimensions } from "@clawctui/solid"
+import { useTerminalDimensions } from "@opentui/solid"
 import path from "path"
 import { createEffect, createMemo, createResource, createSignal, For, Match, onCleanup, Show, Switch } from "solid-js"
 import { DiffViewerFileTree } from "./diff-viewer-file-tree"

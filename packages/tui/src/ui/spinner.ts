@@ -1,6 +1,6 @@
-import type { ColorInput } from "@clawctui/core"
-import { RGBA } from "@clawctui/core"
-import type { ColorGenerator } from "clawctui-spinner"
+import type { ColorInput } from "@opentui/core"
+import { RGBA } from "@opentui/core"
+import type { ColorGenerator } from "opentui-spinner"
 
 interface AdvancedGradientOptions {
   colors: ColorInput[]

@@ -1,4 +1,4 @@
-import { TextAttributes } from "@clawctui/core"
+import { TextAttributes } from "@opentui/core"
 import { useTheme } from "../context/theme"
 import { useDialog } from "./dialog"
 import { useBindings, useCommandShortcut } from "../keymap"

@@ -7,8 +7,8 @@ import {
   decodePasteBytes,
   type KeyEvent,
   type Renderable,
-} from "@clawctui/core"
-import type { CommandContext } from "@clawctui/keymap"
+} from "@opentui/core"
+import type { CommandContext } from "@opentui/keymap"
 import { createEffect, createMemo, onMount, createSignal, onCleanup, on, Show, Switch, Match } from "solid-js"
 import "opentui-spinner/solid"
 import path from "path"
@@ -36,7 +36,7 @@ import { expandPastedTextPlaceholders, expandTrackedPastedText } from "../../pro
 import { usePromptStash } from "../../prompt/stash"
 import { DialogStash } from "../dialog-stash"
 import { type AutocompleteRef, Autocomplete } from "./autocomplete"
-import { useRenderer, useTerminalDimensions, type JSX } from "@clawctui/solid"
+import { useRenderer, useTerminalDimensions, type JSX } from "@opentui/solid"
 import type { AssistantMessage, FilePart, UserMessage } from "@clawc/sdk/v2"
 import { Locale } from "../../util/locale"
 import { errorMessage } from "../../util/error"

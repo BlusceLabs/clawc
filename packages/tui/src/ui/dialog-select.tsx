@@ -5,13 +5,13 @@ import {
   TextAttributes,
   type KeyEvent,
   type Renderable,
-} from "@clawctui/core"
-import type { Binding } from "@clawctui/keymap"
+} from "@opentui/core"
+import type { Binding } from "@opentui/keymap"
 import { useTheme, selectedForeground } from "../context/theme"
 import { entries, filter, flatMap, groupBy, pipe } from "remeda"
 import { batch, createEffect, createMemo, createSignal, For, Show, type JSX, on, onCleanup } from "solid-js"
 import { createStore } from "solid-js/store"
-import { useTerminalDimensions } from "@clawctui/solid"
+import { useTerminalDimensions } from "@opentui/solid"
 import * as fuzzysort from "fuzzysort"
 import { isDeepEqual } from "remeda"
 import { useDialog, type DialogContext } from "./dialog"

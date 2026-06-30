@@ -1,6 +1,6 @@
 import { release } from "node:os"
-import { TextAttributes, type ScrollBoxRenderable } from "@clawctui/core"
-import { useKeyboard, useTerminalDimensions } from "@clawctui/solid"
+import { TextAttributes, type ScrollBoxRenderable } from "@opentui/core"
+import { useKeyboard, useTerminalDimensions } from "@opentui/solid"
 import { createSignal, For, Show } from "solid-js"
 import { getScrollAcceleration } from "../util/scroll"
 import { useClipboard } from "../context/clipboard"

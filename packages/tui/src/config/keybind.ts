@@ -1,8 +1,8 @@
 export * as TuiKeybind from "./keybind"
 
-import type { KeyEvent, Renderable } from "@clawctui/core"
-import type { Binding } from "@clawctui/keymap"
-import type { BindingCommandMap, BindingConfig, BindingDefaults } from "@clawctui/keymap/extras"
+import type { KeyEvent, Renderable } from "@opentui/core"
+import type { Binding } from "@opentui/keymap"
+import type { BindingCommandMap, BindingConfig, BindingDefaults } from "@opentui/keymap/extras"
 import { Schema } from "effect"
 
 const KeyStroke = Schema.Struct({

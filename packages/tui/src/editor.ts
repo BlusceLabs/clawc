@@ -1,4 +1,4 @@
-import type { CliRenderer } from "@clawctui/core"
+import type { CliRenderer } from "@opentui/core"
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs"
 import { readFile, rm, writeFile } from "node:fs/promises"
 import os from "node:os"

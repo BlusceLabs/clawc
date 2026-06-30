@@ -1,4 +1,4 @@
-import { Audio, type AudioErrorContext, type AudioPlayOptions, type AudioSound, type AudioVoice } from "@clawctui/core"
+import { Audio, type AudioErrorContext, type AudioPlayOptions, type AudioSound, type AudioVoice } from "@opentui/core"
 import { readFile } from "node:fs/promises"
 
 let audio: Audio | null | undefined

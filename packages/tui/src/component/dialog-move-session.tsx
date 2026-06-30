@@ -1,5 +1,5 @@
-import { useTerminalDimensions } from "@clawctui/solid"
-import { TextAttributes } from "@clawctui/core"
+import { useTerminalDimensions } from "@opentui/solid"
+import { TextAttributes } from "@opentui/core"
 import { createMemo, createResource, createSignal, onMount, Show } from "solid-js"
 import path from "path"
 import { DialogSelect, type DialogSelectOption } from "../ui/dialog-select"

@@ -1,5 +1,5 @@
 import { createResource, createMemo, createSignal } from "solid-js"
-import { TextAttributes } from "@clawctui/core"
+import { TextAttributes } from "@opentui/core"
 import { DialogSelect } from "../ui/dialog-select"
 import { useSDK } from "../context/sdk"
 import { useDialog } from "../ui/dialog"

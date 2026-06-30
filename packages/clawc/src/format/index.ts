@@ -132,16 +132,21 @@ export const layer = Layer.effect(
         }
 
         if (cfg.formatter !== true) {
+          // Track if Python formatter (ruff/uv) should be disabled
+          const pythonFormatterDisabled = cfg.formatter.ruff?.disabled || cfg.formatter.uv?.disabled
+
           for (const [name, item] of Object.entries(cfg.formatter)) {
             const builtIn = Formatter[name as keyof typeof Formatter]
 
-            // Ruff and uv are both the same formatter, so disabling either should disable both.
-            if (["ruff", "uv"].includes(name) && (cfg.formatter.ruff?.disabled || cfg.formatter.uv?.disabled)) {
-              // TODO combine formatters so shared backends like Ruff/uv don't need linked disable handling here.
-              delete formatters.ruff
-              delete formatters.uv
-              continue
+            // Ruff and uv share the same backend; disabling either disables both
+            if (["ruff", "uv"].includes(name)) {
+              if (pythonFormatterDisabled) {
+                delete formatters.ruff
+                delete formatters.uv
+                continue
+              }
             }
+
             if (item.disabled) {
               delete formatters[name]
               continue

@@ -1,9 +1,9 @@
 import { createContext, useContext, type ParentProps, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useTheme } from "../context/theme"
-import { useTerminalDimensions } from "@opentui/solid"
+import { useTerminalDimensions } from "@clawctui/solid"
 import { SplitBorder } from "./border"
-import { TextAttributes } from "@opentui/core"
+import { TextAttributes } from "@clawctui/core"
 export type ToastOptions = {
   title?: string
   message: string

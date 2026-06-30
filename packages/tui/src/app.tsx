@@ -1,5 +1,5 @@
-import { render, TimeToFirstDraw, useRenderer, useTerminalDimensions } from "@opentui/solid"
-import { createDefaultOpenTuiKeymap } from "@opentui/keymap/opentui"
+import { render, TimeToFirstDraw, useRenderer, useTerminalDimensions } from "@clawctui/solid"
+import { createDefaultOpenTuiKeymap } from "@clawctui/keymap/opentui"
 import { Deferred, Effect } from "effect"
 import { Global } from "@clawc/core/global"
 import { Flag } from "@clawc/core/flag/flag"
@@ -8,7 +8,7 @@ import { ClipboardProvider, useClipboard } from "./context/clipboard"
 import { ExitProvider, useExit } from "./context/exit"
 import { EpilogueProvider } from "./context/epilogue"
 import * as Selection from "./util/selection"
-import { createCliRenderer, MouseButton, type CliRenderer } from "@opentui/core"
+import { createCliRenderer, MouseButton, type CliRenderer } from "@clawctui/core"
 import { RouteProvider, useRoute } from "./context/route"
 import {
   Switch,

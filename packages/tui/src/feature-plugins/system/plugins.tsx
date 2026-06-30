@@ -1,6 +1,6 @@
 import type { TuiPlugin, TuiPluginApi, TuiPluginStatus } from "@clawc/plugin/tui"
 import type { BuiltinTuiPlugin } from "../builtins"
-import { useTerminalDimensions } from "@opentui/solid"
+import { useTerminalDimensions } from "@clawctui/solid"
 import { fileURLToPath } from "url"
 import { DialogSelect, type DialogSelectOption } from "../../ui/dialog-select"
 import { Show, createEffect, createMemo, createSignal } from "solid-js"

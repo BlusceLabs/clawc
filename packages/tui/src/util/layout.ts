@@ -1,4 +1,4 @@
-import type { BaseRenderable, BoxRenderable } from "@opentui/core"
+import type { BaseRenderable, BoxRenderable } from "@clawctui/core"
 
 const previousByParent = new WeakMap<
   BaseRenderable,

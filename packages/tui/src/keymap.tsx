@@ -1,4 +1,4 @@
-import { InputRenderable, TextareaRenderable, type CliRenderer, type KeyEvent, type Renderable } from "@opentui/core"
+import { InputRenderable, TextareaRenderable, type CliRenderer, type KeyEvent, type Renderable } from "@clawctui/core"
 import {
   registerBackspacePopsPendingSequence,
   registerBaseLayoutFallback,
@@ -6,13 +6,13 @@ import {
   registerEscapeClearsPendingSequence,
   registerManagedTextareaLayer,
   registerTimedLeader,
-} from "@opentui/keymap/addons/opentui"
-import { stringifyKeyStroke, type Binding } from "@opentui/keymap"
+} from "@clawctui/keymap/addons/opentui"
+import { stringifyKeyStroke, type Binding } from "@clawctui/keymap"
 import {
   formatCommandBindings as formatCommandBindingsExtra,
   formatKeySequence as formatKeySequenceExtra,
-} from "@opentui/keymap/extras"
-import { KeymapProvider, useKeymap, useKeymapSelector, useBindings } from "@opentui/keymap/solid"
+} from "@clawctui/keymap/extras"
+import { KeymapProvider, useKeymap, useKeymapSelector, useBindings } from "@clawctui/keymap/solid"
 import { createMemo, type Accessor } from "solid-js"
 import { useTuiConfig } from "./config"
 import { TuiKeybind } from "./config/keybind"

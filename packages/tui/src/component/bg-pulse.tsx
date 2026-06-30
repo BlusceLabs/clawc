@@ -4,8 +4,8 @@ import {
   type OptimizedBuffer,
   type RenderContext,
   type RenderableOptions,
-} from "@opentui/core"
-import { extend, useRenderer } from "@opentui/solid"
+} from "@clawctui/core"
+import { extend, useRenderer } from "@clawctui/solid"
 import { onCleanup, onMount } from "solid-js"
 import { tint, useTheme } from "../context/theme"
 import { GoUpsellArtPainter } from "./bg-pulse-render"
@@ -60,7 +60,7 @@ class GoUpsellArtRenderable extends FrameBufferRenderable {
   }
 }
 
-declare module "@opentui/solid" {
+declare module "@clawctui/solid" {
   interface OpenTUIComponents {
     go_upsell_art: typeof GoUpsellArtRenderable
   }

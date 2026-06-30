@@ -1,4 +1,4 @@
-import { MacOSScrollAccel, type ScrollAcceleration } from "@opentui/core"
+import { MacOSScrollAccel, type ScrollAcceleration } from "@clawctui/core"
 
 export type ScrollConfig = {
   scroll_acceleration?: { enabled?: boolean }

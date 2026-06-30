@@ -5,7 +5,7 @@ import { useTheme } from "../../context/theme"
 import { SplitBorder } from "../../ui/border"
 import type { AssistantMessage } from "@clawc/sdk/v2"
 import { Locale } from "../../util/locale"
-import { useTerminalDimensions } from "@opentui/solid"
+import { useTerminalDimensions } from "@clawctui/solid"
 import { useCommandShortcut, useClawcKeymap } from "../../keymap"
 
 export function SubagentFooter() {

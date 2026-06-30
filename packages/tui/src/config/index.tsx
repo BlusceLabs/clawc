@@ -1,6 +1,6 @@
 export * as TuiConfig from "."
 
-import { createBindingLookup } from "@opentui/keymap/extras"
+import { createBindingLookup } from "@clawctui/keymap/extras"
 import { Schema } from "effect"
 import { createContext, type JSX, useContext } from "solid-js"
 import { TuiKeybind } from "./keybind"

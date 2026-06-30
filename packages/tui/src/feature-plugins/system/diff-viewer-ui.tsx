@@ -1,5 +1,5 @@
-import type { BorderSides, ColorInput } from "@opentui/core"
-import type { JSX } from "@opentui/solid"
+import type { BorderSides, ColorInput } from "@clawctui/core"
+import type { JSX } from "@clawctui/solid"
 import { useTheme } from "../../context/theme"
 import { createContext, Show, splitProps, useContext } from "solid-js"
 

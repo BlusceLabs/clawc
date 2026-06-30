@@ -1,5 +1,5 @@
-/** @jsxImportSource @opentui/solid */
-import type { ColorInput, RGBA, ScrollBoxRenderable } from "@opentui/core"
+/** @jsxImportSource @clawctui/solid */
+import type { ColorInput, RGBA, ScrollBoxRenderable } from "@clawctui/core"
 import { Locale } from "../../util/locale"
 import { tint } from "../../context/theme"
 import { createEffect, createMemo, For, Match, Switch } from "solid-js"

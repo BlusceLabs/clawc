@@ -1,9 +1,9 @@
-/** @jsxImportSource @opentui/solid */
-import { RGBA, TextAttributes, type KeyEvent, type Renderable } from "@opentui/core"
-import { useTerminalDimensions } from "@opentui/solid"
+/** @jsxImportSource @clawctui/solid */
+import { RGBA, TextAttributes, type KeyEvent, type Renderable } from "@clawctui/core"
+import { useTerminalDimensions } from "@clawctui/solid"
 import { createEffect, createMemo, createSignal, For, Show } from "solid-js"
 import { useBindings, useKeymapSelector } from "../../keymap"
-import type { ActiveKey } from "@opentui/keymap"
+import type { ActiveKey } from "@clawctui/keymap"
 import type { TuiPlugin, TuiPluginApi } from "@clawc/plugin/tui"
 import type { BuiltinTuiPlugin } from "../builtins"
 

@@ -1,4 +1,4 @@
-import { OptimizedBuffer, RGBA, TextAttributes } from "@opentui/core"
+import { OptimizedBuffer, RGBA, TextAttributes } from "@clawctui/core"
 import { go } from "../logo"
 
 const PERIOD = 4600

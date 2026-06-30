@@ -1,5 +1,5 @@
-import { TextAttributes } from "@opentui/core"
-import { useKeyboard } from "@opentui/solid"
+import { TextAttributes } from "@clawctui/core"
+import { useKeyboard } from "@clawctui/solid"
 import type { VcsFileStatus } from "@clawc/sdk/v2"
 import { createMemo, For } from "solid-js"
 import { createStore } from "solid-js/store"
